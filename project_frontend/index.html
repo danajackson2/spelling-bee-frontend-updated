@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script defer src="index.js"></script>
-
-
 </head>
+
+<body>
 
 <body style ="background-color: #cccccc;">
 
@@ -33,7 +33,23 @@
     </ul>
   </div>
 </nav>
+<button class='new-game'>START A NEW GAME</button>
 
+<div id="new-user-div">
+  <button id="new-user-button">New User</button>
+</div>
+
+<form class="login" id="player-1-login">
+  <label>Player 1</label>
+  <input>
+  <button type="submit">Log in</button>
+</form>
+<form class="login" id="player-2-login">
+  <label>Player 2</label>
+  <input>
+  <button type="submit">Log in</button>
+</form>
+<div id="test"></div>
   <div class="boxed" >
     Player 1
   </div>
@@ -41,6 +57,13 @@
   </div>
   <div id="rules">
     <button class="close">Close X</button>
+    <p class = "audio"></p>
+    <p class = "definition"></p>
+    <form id="answer">
+      <label>SPELL</label>
+      <input>
+      <button type="submit">Submit</button>
+    </form>
   </div>
   <div class="boxed2">
     PLayer 2
@@ -49,6 +72,3 @@
 
 </body>
 </html>
-
-
-
