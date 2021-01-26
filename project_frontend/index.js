@@ -2,13 +2,35 @@
 
 const container = document.getElementById("container");
 
+function addEventListeners(){
+    let rulesnav = document.getElementsByClassName('rulesnav')[0]
+    let closeBtn = document.getElementsByClassName('close')[0]
+    rulesnav.addEventListener('click',() => showRules())
+    closeBtn.addEventListener('click',() => hideRules())
+}
+
+function showRules(){
+    let rules = document.getElementById('rules')
+    rules.style.display = 'block'
+}
+
+function hideRules(){
+    let rules = document.getElementById('rules')
+    rules.style.display = 'None'
+}
+
+
+addEventListeners()
+
 function makeRows(rows, cols) {
   container.style.setProperty('--grid-rows', rows);
   container.style.setProperty('--grid-cols', cols);
   for (c = 0; c < (rows * cols); c++) {
+    let button = document.createElement("button")
     let cell = document.createElement("div");
     cell.innerText = Math.floor(Math.random() * 3) + 1
     cell.id = c;
+    button.append(cell)
     // cell.style.width = '100%' ;
     // cell.style.height = '100%';
 
