@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_01_26_002058) do
 
   create_table "games", force: :cascade do |t|
-    t.text "words"
+    t.string "winner", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
