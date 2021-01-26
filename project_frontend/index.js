@@ -1,18 +1,19 @@
 //= require bootstrap
 let user1 = ""
 let user2 = ""
+addEventListeners()
 
 //API Calls
-function getWords(){
-    fetch('https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=12&limit=25&api_key=cu7u7wkgtpw6qy1dk3dntx8j5mg44xqx87painf5jh5k8blrm')
+function getWord(){
+    fetch('https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=12&limit=1&api_key=cu7u7wkgtpw6qy1dk3dntx8j5mg44xqx87painf5jh5k8blrm')
     .then(res => res.json())
-    .then(words => manageWords(words))
+    .then(words => manageWord(words[0].word))
 }
 
 function getAudio(word){
     fetch(`https://api.wordnik.com/v4/word.json/${word}/audio?useCanonical=false&limit=50&api_key=cu7u7wkgtpw6qy1dk3dntx8j5mg44xqx87painf5jh5k8blrm`)
     .then(res => res.json())
-    .then(object => {return object[0].fileUrl})
+    .then(object => {return object[0][fileUrl]})
 }
 
 function getDefinition(word){
@@ -76,17 +77,13 @@ function newGame(u1, u2){
 
 //DOM Changes
 
-function manageWords(words){
-    words.forEach(word => {
+function manageWord(word){
         let url = getAudio(word)
         let def = getDefinition(word)
-        populateBox(word, url, def)
-    })        
+        showCard(word, url, def)
 }
 
-function populateBox(word, url, def){
-    //add elements to DOM
-}
+
 
 function newUserMenu(){
     if (!document.getElementById('new-user-form')){
@@ -120,8 +117,8 @@ const container = document.getElementById("container");
 function addEventListeners(){
     let rulesnav = document.getElementsByClassName('rulesnav')[0]
     let closeBtn = document.getElementsByClassName('close')[0]
-    rulesnav.addEventListener('click',() => showRules())
-    closeBtn.addEventListener('click',() => hideRules())
+    rulesnav.addEventListener('click',showRules)
+    closeBtn.addEventListener('click',hideRules)
 }
 
 function showRules(){
@@ -131,21 +128,24 @@ function showRules(){
 }
 
 function hideRules(){
-    let rules = document.getElementById('rules')
-    rules.style.display = 'None'
+    let wordcard = document.getElementById('wordcard')
+    wordcard.style.display = 'None'
 }
 
 function showCard(e){
-    let rules = document.getElementById('rules')
-    rules.style.display = 'block'
-    rules.style.background = 'darkgray'
+    let wordcard = document.getElementById('wordcard')
+    wordcard.style.display = 'block'
+    wordcard.style.background = 'darkgray'
     let audio = document.getElementById('audio')
     let definition = document.getElementById('definition')
-    
+    audio.textContent = "Play word audio"
+    definition.textContent = `Word definition :${getWord()}`
+    e.target.textContent = 'X'
+    e.target.style.color = 'white'
+    e.target.style.backgroundColor = 'red'
+    e.target.removeEventListener('click',showCard)
 }
 
-
-addEventListeners()
 
 function makeRows(rows, cols) {
 
@@ -154,8 +154,10 @@ function makeRows(rows, cols) {
   for (c = 0; c < (rows * cols); c++) {
     let cell = document.createElement("div");
     cell.innerText = Math.floor(Math.random() * 3) + 1
-    cell.id = c;
+    cell.id = c+1;
     cell.addEventListener('click',showCard)
+    cell.onmouseover="" 
+    cell.style="cursor: pointer;"
     // cell.style.width = '100%' ;
     // cell.style.height = '100%';
 
@@ -296,3 +298,74 @@ function setCircleDasharray() {
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
 }
+
+
+
+
+const canvasEl = document.querySelector('#canvas');
+
+const w = canvasEl.width = window.innerWidth;
+const h = canvasEl.height = window.innerHeight * 2;
+
+function loop() {
+  requestAnimationFrame(loop);
+	ctx.clearRect(0,0,w,h);
+  
+  confs.forEach((conf) => {
+    conf.update();
+    conf.draw();
+  })
+}
+
+function Confetti () {
+  //construct confetti
+  const colours = ['#fde132', '#009bde', '#ff6b00'];
+  
+  this.x = Math.round(Math.random() * w);
+  this.y = Math.round(Math.random() * h)-(h/2);
+  this.rotation = Math.random()*360;
+
+  const size = Math.random()*(w/60);
+  this.size = size < 15 ? 15 : size;
+
+  this.color = colours[Math.floor(colours.length * Math.random())];
+
+  this.speed = this.size/2;
+  
+  this.opacity = Math.random();
+
+  this.shiftDirection = Math.random() > 0.5 ? 1 : -1;
+}
+
+Confetti.prototype.border = function() {
+  if (this.y >= h) {
+    this.y = h;
+  }
+}
+
+Confetti.prototype.update = function() {
+  this.y += this.speed;
+  
+  if (this.y <= h) {
+    this.x += this.shiftDirection/3;
+    this.rotation += this.shiftDirection*this.speed/100;
+  }
+
+  if (this.y > h) this.border();
+};
+
+Confetti.prototype.draw = function() {
+  ctx.beginPath();
+  ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation+(Math.PI/2));
+  ctx.lineTo(this.x, this.y);
+  ctx.closePath();
+  ctx.globalAlpha = this.opacity;
+  ctx.fillStyle = this.color;
+  ctx.fill();
+};
+
+const ctx = canvasEl.getContext('2d');
+const confNum = Math.floor(w / 4);
+const confs = new Array(confNum).fill().map(_ => new Confetti());
+
+loop();
