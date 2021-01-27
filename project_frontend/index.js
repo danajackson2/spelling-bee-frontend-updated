@@ -2,8 +2,11 @@
 let user1 = ""
 let user2 = ""
 <<<<<<< HEAD
+<<<<<<< HEAD
 const gems = ['https://placeimg.com/1000/480/nature','assets/whitegem.png','assets/purplegem.png','assets/redgem.png']
 =======
+=======
+>>>>>>> parent of b8be1da... login and points
 const gems = ['assets/greengem.png','assets/whitegem.png','assets/purplegem.png','assets/redgem.png']
 >>>>>>> parent of b8be1da... login and points
 addEventListeners()
@@ -114,7 +117,10 @@ function newUserMenu(){
         let button = document.createElement('button')
         button.type = 'submit'
         button.textContent = "Submit"
+<<<<<<< HEAD
         button.style.color = 'black'
+=======
+>>>>>>> parent of b8be1da... login and points
         form.append(label, input, button)
         document.getElementById('new-user-div').appendChild(form)
         form.addEventListener('submit', newUser)
@@ -171,11 +177,14 @@ function showRules(){
 }
 
 function hideRules(){
+<<<<<<< HEAD
     let rules = document.getElementById('rules')
     rules.style.display = 'None'
 }
 
 function hideCard(){
+=======
+>>>>>>> parent of b8be1da... login and points
     let wordcard = document.getElementById('wordcard')
     wordcard.style.display = 'None'
 }
