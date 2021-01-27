@@ -1,7 +1,11 @@
 //= require bootstrap
 let user1 = ""
 let user2 = ""
+<<<<<<< HEAD
 const gems = ['https://placeimg.com/1000/480/nature','assets/whitegem.png','assets/purplegem.png','assets/redgem.png']
+=======
+const gems = ['assets/greengem.png','assets/whitegem.png','assets/purplegem.png','assets/redgem.png']
+>>>>>>> parent of b8be1da... login and points
 addEventListeners()
 
 //API Calls
@@ -160,6 +164,7 @@ function hideScores(){
 }
 
 function showRules(){
+    console.log('hi')
     let rules = document.getElementById('rules')
     rules.style.display = 'block'
     rules.style.background = 'lightgray'
