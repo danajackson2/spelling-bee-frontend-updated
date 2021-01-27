@@ -22,13 +22,20 @@
       <a class="navbar-brand" href="#"><h4>Spelling Bee 🐝</h4></a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="scoreboard"><a href="#"><h4>Scoreboard</h4></a></li>
+      <li class="scoreboard"><a href="#"><h4>High Scores</h4></a></li>
       <li class="rulesnav"><a href="#"><h4>Rules</h4></a></li>
-      <li class="dropdown"><a href="#"><h4>Choose Level</h4> 
+      <li class="dropdown"><a href="#"><h4> Choose Level </h4>
+        <div class="dropdown-content">
+          <a href="#"> Bee 1</a>
+          <a href="#"> Bee 2</a>
+          <a href="#"> Bee 3</a>
+        </div>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+     <span class="glyphicon glyphicon-user"></span><div id="new-user-div"></div>
+        <div id="new-user-button"><h4 id="signup">Sign Up</h4></div>
+      </div>
     </ul>
   </div>
 </nav>
@@ -36,10 +43,6 @@
 <button class='new-game'>START GAME</button>
 <!-- <h1 class="title">Confetti</h1> -->
 
-
-<div id="new-user-div">
-  <button id="new-user-button">New User</button>
-</div>
 
 <form class="login" id="player-1-login">
   <label>Player 1</label>
@@ -52,13 +55,37 @@
   <button type="submit">Log in</button>
 </form>
 <div id="test"></div>
-  <div class="boxed" >
+  <div class='boxed' style="overflow:scroll;" >
     <h3 id='player-1-name' style="text-align: center;">PLAYER 1 NAME</h3>
-    <h3 id='player-1-score' style="text-align: center;">SCORE</h3>
+    <h4 id='player-1-score' style="text-align: center;">SCORE :</h4>
     <div class = "correct1"></div>
     <table style="width:100%">
       <tr>
         <th style ="text-align: center;">Correct Words</th>
+      </tr>
+      <tr>
+        <td>Jill</td>
+      </tr>
+      <tr>
+        <td>Eve</td>
+      </tr>
+      <tr>
+        <td>Jill</td>
+      </tr>
+      <tr>
+        <td>Eve</td>
+      </tr>
+      <tr>
+        <td>Jill</td>
+      </tr>
+      <tr>
+        <td>Eve</td>
+      </tr>
+      <tr>
+        <td>Jill</td>
+      </tr>
+      <tr>
+        <td>Eve</td>
       </tr>
       <tr>
         <td>Jill</td>
@@ -84,6 +111,10 @@
   <div id="container">
   </div>
   <div id = "rules">
+    <button id="closerules">Close X</button>
+  </div>
+  <div id = "highscores">
+    <button id="closescores">Close X</button>
   </div>
 
   <div id="wordcard">
@@ -101,9 +132,9 @@
     </form>
   </div>
 
-  <div class="boxed2">
+  <div class="boxed2" style="overflow:scroll;">
     <h3 id='player-2-name' style="text-align: center;">PLAYER 2 NAME</h3>
-    <h3 id='player-2-score' style="text-align: center;">SCORE</h3>
+    <h4 id='player-2-score' style="text-align: center;">SCORE : </h4>
     <div class = "correct2"></div>
     <div class = "correct1"></div>
     <table style="width:100%;">

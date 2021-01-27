@@ -1,7 +1,7 @@
 //= require bootstrap
 let user1 = ""
 let user2 = ""
-const gems = ['assets/greengem.png','assets/whitegem.png','assets/purplegem.png','assets/redgem.png']
+const gems = ['https://placeimg.com/1000/480/nature','assets/whitegem.png','assets/purplegem.png','assets/redgem.png']
 addEventListeners()
 
 //API Calls
@@ -46,6 +46,8 @@ const GAMES_URL = `${BASE_URL}/games`
 const SESSIONS_URL = `${BASE_URL}/sessions`
 
 function newUser(e){
+    let signup = document.getElementById('signup')
+    signup.style.display = 'block'
     e.preventDefault()
     document.getElementById('new-user-form').remove()
     fetch(USERS_URL, {
@@ -96,15 +98,19 @@ function newGame(u1, u2){
 
 function newUserMenu(){
     if (!document.getElementById('new-user-form')){
+        let signup = document.getElementById('signup')
+        signup.style.display = 'None'
         let form = document.createElement('form')
         form.id = 'new-user-form'
         let label = document.createElement('label')
         label.textContent = "Username: "
         let input = document.createElement('input')
         input.placeholder = "Joe Schmoe"
+        input.style.color = 'black'
         let button = document.createElement('button')
         button.type = 'submit'
         button.textContent = "Submit"
+        button.style.color = 'black'
         form.append(label, input, button)
         document.getElementById('new-user-div').appendChild(form)
         form.addEventListener('submit', newUser)
@@ -132,18 +138,39 @@ const container = document.getElementById("container");
 function addEventListeners(){
     let rulesnav = document.querySelector('li.rulesnav')
     let closeBtn = document.getElementsByClassName('close')[0]
+    let closeRules = document.getElementById('closerules')
+    let scoreBoard = document.getElementsByClassName('scoreboard')[0]
+    let closeScores = document.getElementById('closescores')
     rulesnav.addEventListener('click',showRules)
-    closeBtn.addEventListener('click',hideRules)
+    closeBtn.addEventListener('click',hideCard)
+    closeRules.addEventListener('click',hideRules)
+    scoreBoard.addEventListener('click',showScores)
+    closeScores.addEventListener('click',hideScores)
+}
+
+function showScores(){
+    let scores = document.getElementById('highscores')
+    scores.style.display = 'block'
+    scores.style.background = 'lightgray'
+}
+
+function hideScores(){
+    let scores = document.getElementById('highscores')
+    scores.style.display = 'None'
 }
 
 function showRules(){
-    console.log('hi')
     let rules = document.getElementById('rules')
     rules.style.display = 'block'
-    rules.style.background = 'darkgray'
+    rules.style.background = 'lightgray'
 }
 
 function hideRules(){
+    let rules = document.getElementById('rules')
+    rules.style.display = 'None'
+}
+
+function hideCard(){
     let wordcard = document.getElementById('wordcard')
     wordcard.style.display = 'None'
 }
@@ -175,7 +202,7 @@ function makeRows(rows, cols) {
   for (c = 0; c < (rows * cols); c++) {
     let cell = document.createElement("div");
     var gem = gems[Math.floor(Math.random() * gems.length)];
-    // console.log(gem)
+    console.log(gem)
     cell.style=`background-image: url(${gem});`
     cell.innerText = Math.floor(Math.random() * 3) + 1
     cell.id = c+1;
