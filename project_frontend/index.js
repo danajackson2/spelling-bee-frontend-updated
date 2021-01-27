@@ -5,22 +5,38 @@ const gems = ['assets/greengem.png','assets/whitegem.png','assets/purplegem.png'
 addEventListeners()
 
 //API Calls
-function getWord(){
-    fetch('https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=12&limit=1&api_key=cu7u7wkgtpw6qy1dk3dntx8j5mg44xqx87painf5jh5k8blrm')
+function getWord(points){
+    let min
+    let max
+    if (points === 1){
+        min = 5
+        max = 7
+    } else if (points === 2){
+        min = 8
+        max = 10
+    } else {
+        min = 11
+        max = 13
+    }
+    fetch(`https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=${min}&maxLength=${max}&api_key=cu7u7wkgtpw6qy1dk3dntx8j5mg44xqx87painf5jh5k8blrm`)
     .then(res => res.json())
-    .then(words => manageWord(words[0].word))
+    .then(object => {
+        getAudio(object['word'])
+        getDefinition(object['word'])
+        addWordToCard(object['word'])
+    })
 }
-
 function getAudio(word){
     fetch(`https://api.wordnik.com/v4/word.json/${word}/audio?useCanonical=false&limit=50&api_key=cu7u7wkgtpw6qy1dk3dntx8j5mg44xqx87painf5jh5k8blrm`)
     .then(res => res.json())
-    .then(object => {return object[0][fileUrl]})
+    .then(object => {
+        addAudioToCard(object[0]['fileUrl'])
+    })
 }
-
 function getDefinition(word){
     fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=200&includeRelated=false&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=cu7u7wkgtpw6qy1dk3dntx8j5mg44xqx87painf5jh5k8blrm`)
     .then(res => res.json())
-    .then(object => {return object[1].text})
+    .then(object => addDefinitionToCard(object[1].text))
 }
 
 //Backend Fetches
@@ -78,12 +94,6 @@ function newGame(u1, u2){
 
 //DOM Changes
 
-function manageWord(word){
-        let url = getAudio(word)
-        let def = getDefinition(word)
-        showCard(word, url, def)
-}
-
 function newUserMenu(){
     if (!document.getElementById('new-user-form')){
         let form = document.createElement('form')
@@ -102,15 +112,21 @@ function newUserMenu(){
 }
 
 function populateUser(name, num){
-    //add username to left or right pane depending on which player they are
-    //assign user1 or user2
+    if (num === 1){
+        document.getElementById('player-1-name').textContent = name;
+        debugger
+        user1 = name
+    } else {
+        document.getElementById('player-2-name').textContent = name;
+        user2 = name
+    }
 }
 
 //Event Listeners
 document.getElementById('new-user-button').addEventListener('click', newUserMenu)
 document.getElementById('player-1-login').addEventListener('submit', (e) => login(e, 1))
 document.getElementById('player-2-login').addEventListener('submit', (e) => login(e, 2))
-// document.getElementById('new-game').addEventListener('click', () => newGame(user1, user2))
+//document.getElementById('new-game').addEventListener('click', () => newGame(user1, user2))
 const container = document.getElementById("container");
 
 function addEventListeners(){
@@ -133,17 +149,23 @@ function hideRules(){
 }
 
 function showCard(e){
+    getWord(parseInt(e.target.innerText))
     let wordcard = document.getElementById('wordcard')
     wordcard.style.display = 'block'
     wordcard.style.background = 'darkgray'
-    let audio = document.getElementById('audio')
-    let definition = document.getElementById('definition')
-    audio.textContent = "Play word audio"
-    definition.textContent = `Word definition :`
     e.target.textContent = 'X'
     e.target.style.color = 'white'
     e.target.style.backgroundColor = 'red'
-    e.target.removeEventListener('click',showCard)
+    e.target.removeEventListener('click', showCard)
+}
+function addWordToCard(word){
+    document.querySelector('#correct-word').value = word
+}
+function addAudioToCard(url){
+    document.getElementById('audio-source').src = url
+}
+function addDefinitionToCard(def){
+    document.getElementById('definition').textContent = `Word definition: ${def}`
 }
 
 
@@ -182,7 +204,6 @@ function makeRows(rows, cols) {
     container.appendChild(cell).className = "grid-item";
   };
 };
-
 
 
 makeRows(6,6);

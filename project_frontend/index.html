@@ -34,7 +34,7 @@
 </nav>
 
 <button class='new-game'>START GAME</button>
-<h1 class="title">Confetti</h1>
+<!-- <h1 class="title">Confetti</h1> -->
 
 
 <div id="new-user-div">
@@ -53,7 +53,8 @@
 </form>
 <div id="test"></div>
   <div class="boxed" >
-    <h3 style="text-align: center;">PLAYER 1 NAME</h3>
+    <h3 id='player-1-name' style="text-align: center;">PLAYER 1 NAME</h3>
+    <h3 id='player-1-score' style="text-align: center;">SCORE</h3>
     <div class = "correct1"></div>
     <table style="width:100%">
       <tr>
@@ -87,16 +88,22 @@
 
   <div id="wordcard">
     <button class="close">Close X</button>
-    <p id = "audio"></p>
+    <p>Click below to hear your word</p>
+    <audio controls>
+      <source id='audio-source' type="audio/mp3">
+    </audio>
     <p id = "definition"></p>
+    <p id="correct-word" display="hidden"></p>
     <form id="answer">
       <label>SPELL</label>
       <input>
       <button type="submit">Submit</button>
     </form>
   </div>
+
   <div class="boxed2">
-    <h3 style="text-align: center;">PLAYER 2 NAME</h3>
+    <h3 id='player-2-name' style="text-align: center;">PLAYER 2 NAME</h3>
+    <h3 id='player-2-score' style="text-align: center;">SCORE</h3>
     <div class = "correct2"></div>
     <div class = "correct1"></div>
     <table style="width:100%;">

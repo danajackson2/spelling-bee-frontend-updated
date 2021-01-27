@@ -517,3 +517,87 @@ Processing by UsersController#index as */*
 Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms | Allocations: 906)
 
 
+Started POST "/users" for ::1 at 2021-01-26 16:57:39 -0800
+  [1m[35m (15.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Dana", "user"=>{"name"=>"Dana"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Dana"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `create'
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Dana"], ["created_at", "2021-01-27 00:57:40.772738"], ["updated_at", "2021-01-27 00:57:40.772738"]]
+  ↳ app/controllers/users_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `create'
+Completed 200 OK in 110ms (Views: 0.4ms | ActiveRecord: 6.5ms | Allocations: 12950)
+
+
+Started GET "/users" for ::1 at 2021-01-26 16:57:49 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 1073)
+
+
+Started GET "/users" for ::1 at 2021-01-26 16:57:54 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1030)
+
+
+Started POST "/users" for ::1 at 2021-01-26 16:58:02 -0800
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"shreya", "user"=>{"name"=>"shreya"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "shreya"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `create'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2012)
+
+
+Started POST "/users" for ::1 at 2021-01-26 16:58:13 -0800
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Sreya", "user"=>{"name"=>"Sreya"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Sreya"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `create'
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sreya"], ["created_at", "2021-01-27 00:58:13.049943"], ["updated_at", "2021-01-27 00:58:13.049943"]]
+  ↳ app/controllers/users_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (12.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `create'
+Completed 200 OK in 45ms (Views: 0.6ms | ActiveRecord: 13.9ms | Allocations: 4904)
+
+
+Started GET "/users" for ::1 at 2021-01-26 16:58:19 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.2ms | Allocations: 1118)
+
+
+Started GET "/users" for ::1 at 2021-01-26 16:59:39 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 1118)
+
+
+Started GET "/users" for ::1 at 2021-01-26 16:59:51 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.3ms | Allocations: 1118)
+
+
+Started GET "/users" for ::1 at 2021-01-26 16:59:57 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 1118)
+
+

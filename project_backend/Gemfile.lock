@@ -95,11 +95,8 @@ GEM
     msgpack (1.3.3)
     nio4r (2.5.4)
     nokogiri (1.11.1-x86_64-darwin)
-<<<<<<< HEAD
       racc (~> 1.4)
     nokogiri (1.11.1-x86_64-linux)
-=======
->>>>>>> dana-mon
       racc (~> 1.4)
     puma (5.1.1)
       nio4r (~> 2.0)
@@ -160,10 +157,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
-<<<<<<< HEAD
   x86_64-linux
-=======
->>>>>>> dana-mon
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
