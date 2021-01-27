@@ -46,7 +46,6 @@ html, body {
 
 .boxed2 {
   border: 1px solid green ;
-  
   width: 20%;
   height: 50%;
 
@@ -156,6 +155,7 @@ body {
   width: 100vw;
 	height: 100vh;
   position: relative;
+
 }
 
 canvas {
@@ -192,3 +192,21 @@ canvas {
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
 }
+
+#player-1-login{
+  top: 20%;
+  left: 5%;
+  position: fixed;
+}
+
+#player-2-login{
+  top: 20%;
+  left: 75%;
+  position: fixed;
+}
+
+table{
+  text-align: center;
+}
+
+

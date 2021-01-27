@@ -1,6 +1,7 @@
 //= require bootstrap
 let user1 = ""
 let user2 = ""
+const gems = ['assets/greengem.png','assets/whitegem.png','assets/purplegem.png','assets/redgem.png']
 addEventListeners()
 
 //API Calls
@@ -83,8 +84,6 @@ function manageWord(word){
         showCard(word, url, def)
 }
 
-
-
 function newUserMenu(){
     if (!document.getElementById('new-user-form')){
         let form = document.createElement('form')
@@ -115,13 +114,14 @@ document.getElementById('player-2-login').addEventListener('submit', (e) => logi
 const container = document.getElementById("container");
 
 function addEventListeners(){
-    let rulesnav = document.getElementsByClassName('rulesnav')[0]
+    let rulesnav = document.querySelector('li.rulesnav')
     let closeBtn = document.getElementsByClassName('close')[0]
     rulesnav.addEventListener('click',showRules)
     closeBtn.addEventListener('click',hideRules)
 }
 
 function showRules(){
+    console.log('hi')
     let rules = document.getElementById('rules')
     rules.style.display = 'block'
     rules.style.background = 'darkgray'
@@ -139,7 +139,7 @@ function showCard(e){
     let audio = document.getElementById('audio')
     let definition = document.getElementById('definition')
     audio.textContent = "Play word audio"
-    definition.textContent = `Word definition :${getWord()}`
+    definition.textContent = `Word definition :`
     e.target.textContent = 'X'
     e.target.style.color = 'white'
     e.target.style.backgroundColor = 'red'
@@ -148,11 +148,13 @@ function showCard(e){
 
 
 function makeRows(rows, cols) {
-
   container.style.setProperty('--grid-rows', rows);
   container.style.setProperty('--grid-cols', cols);
   for (c = 0; c < (rows * cols); c++) {
     let cell = document.createElement("div");
+    var gem = gems[Math.floor(Math.random() * gems.length)];
+    // console.log(gem)
+    cell.style=`background-image: url(${gem});`
     cell.innerText = Math.floor(Math.random() * 3) + 1
     cell.id = c+1;
     cell.addEventListener('click',showCard)
@@ -302,70 +304,70 @@ function setCircleDasharray() {
 
 
 
-const canvasEl = document.querySelector('#canvas');
+// const canvasEl = document.querySelector('#canvas');
 
-const w = canvasEl.width = window.innerWidth;
-const h = canvasEl.height = window.innerHeight * 2;
+// const w = canvasEl.width = window.innerWidth;
+// const h = canvasEl.height = window.innerHeight * 2;
 
-function loop() {
-  requestAnimationFrame(loop);
-	ctx.clearRect(0,0,w,h);
+// function loop() {
+//   requestAnimationFrame(loop);
+// 	ctx.clearRect(0,0,w,h);
   
-  confs.forEach((conf) => {
-    conf.update();
-    conf.draw();
-  })
-}
+//   confs.forEach((conf) => {
+//     conf.update();
+//     conf.draw();
+//   })
+// }
 
-function Confetti () {
-  //construct confetti
-  const colours = ['#fde132', '#009bde', '#ff6b00'];
+// function Confetti () {
+//   //construct confetti
+//   const colours = ['#fde132', '#009bde', '#ff6b00'];
   
-  this.x = Math.round(Math.random() * w);
-  this.y = Math.round(Math.random() * h)-(h/2);
-  this.rotation = Math.random()*360;
+//   this.x = Math.round(Math.random() * w);
+//   this.y = Math.round(Math.random() * h)-(h/2);
+//   this.rotation = Math.random()*360;
 
-  const size = Math.random()*(w/60);
-  this.size = size < 15 ? 15 : size;
+//   const size = Math.random()*(w/60);
+//   this.size = size < 15 ? 15 : size;
 
-  this.color = colours[Math.floor(colours.length * Math.random())];
+//   this.color = colours[Math.floor(colours.length * Math.random())];
 
-  this.speed = this.size/2;
+//   this.speed = this.size/2;
   
-  this.opacity = Math.random();
+//   this.opacity = Math.random();
 
-  this.shiftDirection = Math.random() > 0.5 ? 1 : -1;
-}
+//   this.shiftDirection = Math.random() > 0.5 ? 1 : -1;
+// }
 
-Confetti.prototype.border = function() {
-  if (this.y >= h) {
-    this.y = h;
-  }
-}
+// Confetti.prototype.border = function() {
+//   if (this.y >= h) {
+//     this.y = h;
+//   }
+// }
 
-Confetti.prototype.update = function() {
-  this.y += this.speed;
+// Confetti.prototype.update = function() {
+//   this.y += this.speed;
   
-  if (this.y <= h) {
-    this.x += this.shiftDirection/3;
-    this.rotation += this.shiftDirection*this.speed/100;
-  }
+//   if (this.y <= h) {
+//     this.x += this.shiftDirection/3;
+//     this.rotation += this.shiftDirection*this.speed/100;
+//   }
 
-  if (this.y > h) this.border();
-};
+//   if (this.y > h) this.border();
+// };
 
-Confetti.prototype.draw = function() {
-  ctx.beginPath();
-  ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation+(Math.PI/2));
-  ctx.lineTo(this.x, this.y);
-  ctx.closePath();
-  ctx.globalAlpha = this.opacity;
-  ctx.fillStyle = this.color;
-  ctx.fill();
-};
+// Confetti.prototype.draw = function() {
+//   ctx.beginPath();
+//   ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation+(Math.PI/2));
+//   ctx.lineTo(this.x, this.y);
+//   ctx.closePath();
+//   ctx.globalAlpha = this.opacity;
+//   ctx.fillStyle = this.color;
+//   ctx.fill();
+// };
 
-const ctx = canvasEl.getContext('2d');
-const confNum = Math.floor(w / 4);
-const confs = new Array(confNum).fill().map(_ => new Confetti());
+// const ctx = canvasEl.getContext('2d');
+// const confNum = Math.floor(w / 4);
+// const confs = new Array(confNum).fill().map(_ => new Confetti());
 
-loop();
+// loop();
