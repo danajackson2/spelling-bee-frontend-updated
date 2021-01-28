@@ -48,15 +48,21 @@ function login(e, num){
     if (document.getElementById(`player-${num}-name`).textContent === `PLAYER ${num}`){
       e.preventDefault()
       let name = e.target.querySelector('input').value
-      fetch(USERS_URL)
+      fetch(`${USERS_URL}/login/${name}`,{
+        method: 'POST',
+        headers: {'content-type':'application/json'},
+        body: JSON.stringify({
+          username: name
+        })
+      })
       .then(res => res.json())
-      .then(users => {
-          if (users.find(user => user.name === name) === undefined){
-              alert("User does not exist.")
-          } else {
-              document.querySelector(`#player-${num}-login input`).value = ""
-              populateUser(name, num)
-          }
+      .then(object => {
+        if (object["message"]){
+          alert(object['message'])
+        } else {
+          document.querySelector(`#player-${num}-login input`).value = ""
+          populateUser(object['name'], num)
+        }
       })
     }
 }
@@ -81,13 +87,29 @@ function newGame(u1, u2, num=4){
   }
 }
 
+function addWinnerToGame(user){
+  fetch(`${GAMES_URL}/${currentGame.id}`, {
+    method: 'PATCH',
+    headers: {'content-type':'application/json'},
+    body: JSON.stringify({
+        winner: user
+    })
+})
+}
+
+function getAudio(word){
+  fetch(`https://api.wordnik.com/v4/word.json/${word}/audio?useCanonical=false&limit=50&api_key=cu7u7wkgtpw6qy1dk3dntx8j5mg44xqx87painf5jh5k8blrm`)
+  .then(res => res.json())
+  .then(object => document.querySelector('#audio-source').src = object[0]['fileUrl'])
+}
+
 //DOM Changes
 function startGame(num){
-   clearBoard()
+  clearBoard()
   counter = 0
   createGrid(num);
   currentPlayer = 1
-  document.querySelector('div.boxed').style.background = '#D0FFA3'
+  document.querySelector('div.boxed').style.background = '#fff0ba'
 }
 
 function clearBoard(){
@@ -98,6 +120,8 @@ function clearBoard(){
   document.querySelectorAll('div.incorrect1 table td').forEach(el => el.remove())
   document.querySelectorAll('div.correct2 table td').forEach(el => el.remove())
   document.querySelectorAll('div.incorrect2 table td').forEach(el => el.remove())
+  document.querySelector('#player-1-score span').textContent = 0
+  document.querySelector('#player-2-score span').textContent = 0
 }
 
 function newUserMenu(){
@@ -171,23 +195,24 @@ function hideRules(){
 }
 
 function showCard(e){
-  // startTimer()
+  // createTimer()
   // document.querySelector('div.base-timer').style.display = "block"
   getWord(parseInt(e.target.innerText))
   currentBoxNum = e.target.id
   let wordcard = document.getElementById('wordcard')
   wordcard.style.display = 'block'
-  wordcard.style.background = 'darkgray'
+  wordcard.style.background = '#c2eeff'
 }
 
 function addWordToCard(word){
-    document.querySelector('#audio-source').src = word.url
+    getAudio(word.name)
     document.querySelector('#definition').textContent = word.definition
     document.querySelector('#correct-word').textContent = word.name
 }
 
 function evaluateAnswer(e, num){
   e.preventDefault()
+  // document.getElementById('app').innerHTML = ""
   let box = document.getElementById(`${num}`)
   // document.querySelector('div.base-timer').style.display = "none"
   let answer = e.target.querySelector('input').value.toLowerCase()
@@ -208,7 +233,7 @@ function evaluateAnswer(e, num){
 function boxToDone(box){
   box.textContent = 'X'
   box.style.color = 'white'
-  box.style.backgroundColor = 'red'
+  box.style.backgroundColor = '#c9c9c9'
   let row = Math.floor((box.id-1)/curr_grid.length)
   let column = (box.id-1)%curr_grid.length
   curr_grid[row][column] = 0
@@ -219,6 +244,7 @@ function boxToDone(box){
 }
 
 function endGame(){
+  addWinnerToGame(winner())
   let canvas = document.createElement('canvas')
   canvas.id = 'canvas'
   document.querySelector('body').appendChild(canvas)
@@ -227,6 +253,19 @@ function endGame(){
     document.querySelector('canvas').remove()
     clearBoard()
   }, 5000)
+}
+
+function winner(){
+  let p1_score = parseInt(document.querySelector('#player-1-score span').textContent)
+  let p2_score = parseInt(document.querySelector('#player-2-score span').textContent)
+  if (p1_score > p2_score) { 
+    return user1
+  } else if (p2_score > p1_score){
+    return user2
+  } else {
+    alert("It's a tie, play a new game!")
+    clearBoard()
+  }
 }
 
 function addToCorrectColumn(word){
@@ -250,12 +289,16 @@ function addToIncorrectColumn(word){
 function togglePlayer(){
   if (currentPlayer === 1){
     currentPlayer = 2
-    document.querySelector('div.boxed2').style.background = '#D0FFA3'
+    document.querySelector('div.boxed2').style.background = '#fff0ba'
     document.querySelector('div.boxed').style.background = 'white'
+    document.getElementById('left-bee').style.display = 'None'
+    document.getElementById('right-bee').style.display = 'block'
   } else {
     currentPlayer = 1
-    document.querySelector('div.boxed').style.background = '#D0FFA3'
+    document.querySelector('div.boxed').style.background = '#fff0ba'
     document.querySelector('div.boxed2').style.background = 'white'
+    document.getElementById('right-bee').style.display = 'None'
+    document.getElementById('left-bee').style.display = 'block'
   }
 }
 
@@ -291,18 +334,18 @@ function makeGrid(grid) {
     // cell.style.width = '100%' ;
     // cell.style.height = '100%';
     if (cell.innerText == '1'){
-        cell.style.backgroundColor = '#f2f2f2';
+        cell.style.backgroundColor = '#b0cfb1';
         cell.style.color = 'black'
         cell.style.fontSize = '30px'
     }
     else if(cell.innerText == '2'){
-        cell.style.backgroundColor = '#595959';
+        cell.style.backgroundColor = '#3d823f';
         cell.style.color = 'white'
         cell.style.fontSize = '30px'
     }
     else if
     (cell.innerText == '3'){
-        cell.style.backgroundColor = '#000000'
+        cell.style.backgroundColor = '#004202'
         cell.style.color = 'white'
         cell.style.fontSize = '30px'
     }
@@ -310,212 +353,154 @@ function makeGrid(grid) {
   };
 };
 
-// function makeRows(rows, cols) {
-//   container.style.setProperty('--grid-rows', rows);
-//   container.style.setProperty('--grid-cols', cols);
-//   for (c = 0; c < (rows * cols); c++) {
-//     let cell = document.createElement("div");
-//     var gem = gems[Math.floor(Math.random() * gems.length)];
-//     // console.log(gem)
-//     cell.style=`background-image: url(${gem});`
-//     cell.innerText = Math.floor(Math.random() * 3) + 1
-//     cell.id = c+1;
-//     cell.addEventListener('click',showCard)
-//     cell.onmouseover="" 
-//     cell.style="cursor: pointer;"
-//     // cell.style.width = '100%' ;
-//     // cell.style.height = '100%';
-
-//     if (cell.innerText == '1'){
-//         cell.style.backgroundColor = '#f2f2f2';
-//         cell.style.color = 'black'
-//         cell.style.fontSize = '30px'
-//     }
-//     else if(cell.innerText == '2'){
-//         cell.style.backgroundColor = '#595959';
-//         cell.style.color = 'white'
-//         cell.style.fontSize = '30px'
-//     }
-//     else if
-//     (cell.innerText == '3'){
-//         cell.style.backgroundColor = '#000000'
-//         cell.style.color = 'white'
-//         cell.style.fontSize = '30px'
-//     }
-//     container.appendChild(cell).className = "grid-item";
-//   };
-// };
-
-const FULL_DASH_ARRAY = 283;
-const WARNING_THRESHOLD = 10;
-const ALERT_THRESHOLD = 5;
-
-const COLOR_CODES = {
-  info: {
-    color: "green"
-  },
-  warning: {
-    color: "orange",
-    threshold: WARNING_THRESHOLD
-  },
-  alert: {
-    color: "red",
-    threshold: ALERT_THRESHOLD
-  }
-};
-
-
+function createTimer()
+{
+    const FULL_DASH_ARRAY = 283;
+    const WARNING_THRESHOLD = 10;
+    const ALERT_THRESHOLD = 5;
+    const COLOR_CODES = {
+      info: {
+        color: "green"
+      },
+      warning: {
+        color: "orange",
+        threshold: WARNING_THRESHOLD
+      },
+      alert: {
+        color: "red",
+        threshold: ALERT_THRESHOLD
+      }
+    };
+ 
+    const TIME_LIMIT = 30;
+    let timePassed = 0;
+    let timerInterval = null;
+    let timeLeft = TIME_LIMIT;
+    let remainingPathColor = COLOR_CODES.info.color;
+    document.getElementById("app").innerHTML = `
+    <div class="base-timer">
+      <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g class="base-timer__circle">
+          <circle class="base-timer__path-elapsed" cx="50" cy="50" r="20"></circle>
+          <path
+            id="base-timer-path-remaining"
+            stroke-dasharray="283"
+            class="base-timer__path-remaining ${remainingPathColor}"
+            d="
+              M 50, 50
+              m -20, 0
+              a 20,20 0 1,0 40,0
+              a 20,20 0 1,0 -40,0
+            "
+          ></path>
+        </g>
+      </svg>
+      <span id="base-timer-label" class="base-timer__label">${formatTime(
+        timeLeft
+      )}</span>
+    </div>
+    `
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        timePassed = timePassed += 1;
+        timeLeft = TIME_LIMIT - timePassed;
+        document.getElementById("base-timer-label").innerHTML = formatTime(
+          timeLeft
+        );
+        setCircleDasharray();
+        setRemainingPathColor(timeLeft);
+        if (timeLeft === 0) {
+          onTimesUp();
+        }
+      }, 1000);
+    }
+    function formatTime(time) {
+      const minutes = Math.floor(time / 60);
+      let seconds = time % 60;
+      if (seconds < 10) {
+        seconds = `0${seconds}`;
+      }
+      return `${minutes}:${seconds}`;
+    }
+    function setRemainingPathColor(timeLeft) {
+      const { alert, warning, info } = COLOR_CODES;
+      if (timeLeft <= alert.threshold) {
+        document
+          .getElementById("base-timer-path-remaining")
+          .classList.remove(warning.color);
+        document
+          .getElementById("base-timer-path-remaining")
+          .classList.add(alert.color);
+      } else if (timeLeft <= warning.threshold) {
+        document
+          .getElementById("base-timer-path-remaining")
+          .classList.remove(info.color);
+        document
+          .getElementById("base-timer-path-remaining")
+          .classList.add(warning.color);
+      }
+    }
+    function calculateTimeFraction() {
+      const rawTimeFraction = timeLeft / TIME_LIMIT;
+      return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+    }
+    function setCircleDasharray() {
+      const circleDasharray = `${(
+        calculateTimeFraction() * FULL_DASH_ARRAY
+      ).toFixed(0)} 283`;
+      document
+        .getElementById("base-timer-path-remaining")
+        .setAttribute("stroke-dasharray", circleDasharray);
+    }
+    startTimer()
+}
 function onTimesUp() {
   clearInterval(timerInterval);
+  // document.getElementById('app').innerHTML = ""
   document.querySelector('div.base-timer').style.display = "none"
   document.querySelector('form#answer input').value = ""
   document.getElementById('wordcard').style.display = "None"
   togglePlayer()
 }
 
-const TIME_LIMIT = 3;
-let timePassed = 0;
-let timerInterval = null;
-let timeLeft = TIME_LIMIT;
-let remainingPathColor = COLOR_CODES.info.color;
-
-document.getElementById("app").innerHTML = `
-<div class="base-timer">
-  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <g class="base-timer__circle">
-      <circle class="base-timer__path-elapsed" cx="50" cy="50" r="20"></circle>
-      <path
-        id="base-timer-path-remaining"
-        stroke-dasharray="283"
-        class="base-timer__path-remaining ${remainingPathColor}"
-        d="
-          M 50, 50
-          m -20, 0
-          a 20,20 0 1,0 40,0
-          a 20,20 0 1,0 -40,0
-        "
-      ></path>
-    </g>
-  </svg>
-  <span id="base-timer-label" class="base-timer__label">${formatTime(
-    timeLeft
-  )}</span>
-</div>
-`;
-
-function startTimer() {
-
-  timerInterval = setInterval(() => {
-    timePassed = timePassed += 1;
-    timeLeft = TIME_LIMIT - timePassed;
-    document.getElementById("base-timer-label").innerHTML = formatTime(
-      timeLeft
-    );
-    setCircleDasharray();
-    setRemainingPathColor(timeLeft);
-
-    if (timeLeft === 0) {
-      onTimesUp();
-    }
-  }, 1000);
-}
-
-function formatTime(time) {
-  const minutes = Math.floor(time / 60);
-  let seconds = time % 60;
-
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
-
-  return `${minutes}:${seconds}`;
-}
-
-function setRemainingPathColor(timeLeft) {
-  const { alert, warning, info } = COLOR_CODES;
-  if (timeLeft <= alert.threshold) {
-    document
-      .getElementById("base-timer-path-remaining")
-      .classList.remove(warning.color);
-    document
-      .getElementById("base-timer-path-remaining")
-      .classList.add(alert.color);
-  } else if (timeLeft <= warning.threshold) {
-    document
-      .getElementById("base-timer-path-remaining")
-      .classList.remove(info.color);
-    document
-      .getElementById("base-timer-path-remaining")
-      .classList.add(warning.color);
-  }
-}
-
-function calculateTimeFraction() {
-  const rawTimeFraction = timeLeft / TIME_LIMIT;
-  return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
-}
-
-function setCircleDasharray() {
-  const circleDasharray = `${(
-    calculateTimeFraction() * FULL_DASH_ARRAY
-  ).toFixed(0)} 283`;
-  document
-    .getElementById("base-timer-path-remaining")
-    .setAttribute("stroke-dasharray", circleDasharray);
-}
-
 function throwConfetti(){
   const canvasEl = document.querySelector('#canvas');
   const w = canvasEl.width = window.innerWidth;
   const h = canvasEl.height = window.innerHeight * 2;
-
   function loop() {
     requestAnimationFrame(loop);
     ctx.clearRect(0,0,w,h);
-    
     confs.forEach((conf) => {
       conf.update();
       conf.draw();
     })
   }
-
   function Confetti () {
     //construct confetti
     const colours = ['#fde132', '#009bde', '#ff6b00'];
-    
     this.x = Math.round(Math.random() * w);
     this.y = Math.round(Math.random() * h)-(h/2);
     this.rotation = Math.random()*360;
-
     const size = Math.random()*(w/60);
     this.size = size < 15 ? 15 : size;
-
     this.color = colours[Math.floor(colours.length * Math.random())];
-
     this.speed = this.size/2;
-    
     this.opacity = Math.random();
-
     this.shiftDirection = Math.random() > 0.5 ? 1 : -1;
   }
-
   Confetti.prototype.border = function() {
     if (this.y >= h) {
       this.y = h;
     }
   }
-
   Confetti.prototype.update = function() {
     this.y += this.speed;
-    
     if (this.y <= h) {
       this.x += this.shiftDirection/3;
       this.rotation += this.shiftDirection*this.speed/100;
     }
-
     if (this.y > h) this.border();
   };
-
   Confetti.prototype.draw = function() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation+(Math.PI/2));
@@ -525,10 +510,8 @@ function throwConfetti(){
     ctx.fillStyle = this.color;
     ctx.fill();
   };
-
   const ctx = canvasEl.getContext('2d');
   const confNum = Math.floor(w / 4);
   const confs = new Array(confNum).fill().map(_ => new Confetti());
-
   loop();
 }

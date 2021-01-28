@@ -75,6 +75,9 @@
   <button type="submit">Log in</button>
 </form>
 
+<img src = "http://clipart-library.com/images/yikA5jj4T.png" id = "left-bee" width ="70" height="70">
+<img src = "http://clipart-library.com/images/yikA5jj4T.png" id = "right-bee" width ="90" height="90">
+
   <div class="boxed">
     <h3 id='player-1-name' style="text-align: center;">PLAYER 1</h3>
     <h3 id='player-1-score' style="text-align: center;">SCORE: </h3>
@@ -100,11 +103,12 @@
     <p>These are the rules. Fill this out later!</p>
   </div>
 
-  <div id="wordcard">
+  <div id="wordcard" style="background:rgb(142, 185, 248)">
     <p>Click below to hear your word</p>
-    <audio controls>
-      <source id='audio-source'>
-    </audio>
+    <!-- <audio controls preload="auto">
+      <source type = 'audio/mp3' id='audio-source'>
+    </audio> -->
+    <iframe id='audio-source' style="height:90px"></iframe>
     <p id = "definition"></p>
     <p id="correct-word" display="none"></p>
     <form id="answer">
