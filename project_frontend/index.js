@@ -266,7 +266,7 @@ function evaluateAnswer(e, num){
 
 function boxToDone(box){
   box.textContent = 'X'
-  box.style.color = 'white'
+  box.style.color = '#c9c9c9'
   box.style.backgroundColor = '#c9c9c9'
   let row = Math.floor((box.id-1)/curr_grid.length)
   let column = (box.id-1)%curr_grid.length
@@ -283,6 +283,7 @@ function endGame(){
   let canvas = document.createElement('canvas')
   canvas.id = 'canvas'
   document.querySelector('body').appendChild(canvas)
+  debugger
   throwConfetti()
   setTimeout(() => {
     document.querySelector('canvas').remove()
@@ -314,9 +315,19 @@ function winnerBanner(user){
   div.style.backgroundPosition = 'center'
   div.style.backgroundRepeat = 'no-repeat'
   div.style.backgroundSize = 'cover'
+  div.style.border = "2px solid black"
+  div.style.width = '50%'
+  div.style.height = '50%'
+  div.style.position = 'fixed'
+  div.style.top = '50%'
+  div.style.left = '50%'
+  div.style.transform = 'translate(-50%, -50%)'
   let h2 = document.createElement('h2')
   h2.textContent = `${user} is the winner!!`
+  h2.style.color = 'white'
   h2.style.fontSize = '100px'
+  h2.style.position = 'absolute'
+  h2.style.bottom = '60px'
   div.appendChild(h2)
   document.querySelector('body').appendChild(div)
 }
@@ -372,6 +383,7 @@ function updateScore(box){
     })
     newScore = currentScore + parseInt(points)*filledBoxes
     document.querySelector(`#player-${num}-score span`).textContent = newScore
+    debugger
 }
 
 function createGrid(n){
