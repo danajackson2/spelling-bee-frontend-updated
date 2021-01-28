@@ -188,7 +188,6 @@ function addEventListeners(){
 function showRules(){
     let rules = document.getElementById('rules')
     rules.style.display = 'block'
-    rules.style.background = 'darkgray'
 }
 
 function hideRules(){
