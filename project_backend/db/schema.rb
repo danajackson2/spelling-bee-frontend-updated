@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_160108) do
   create_table "sessions", force: :cascade do |t|
     t.integer "game_id", null: false
     t.integer "user_id", null: false
+    t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["game_id"], name: "index_sessions_on_game_id"

@@ -11,8 +11,6 @@ const container = document.getElementById("container");
 const gems = ['assets/greengem.png','assets/whitegem.png','assets/purplegem.png','assets/redgem.png']
 addEventListeners()
 
-
-//API Calls
 function getWord(difficulty){
   fetch(`${WORDS_URL}/${difficulty}`)
   .then(res => res.json())
@@ -97,6 +95,28 @@ function addWinnerToGame(user){
         winner: user
     })
 })
+}
+
+function addScoresToSessions(user1, user2){
+  fetch(`${SESSIONS_URL}`,{
+    method: 'PATCH',
+    headers: {'content-type':'application/json'},
+    body: JSON.stringify({
+      user: user1,
+      game_id: currentGame.id,
+      score: parseInt(document.querySelector('#player-1-score span').textContent)
+    })
+  })
+
+  fetch(`${SESSIONS_URL}`,{
+    method: 'PATCH',
+    headers: {'content-type':'application/json'},
+    body: JSON.stringify({
+      user: user1,
+      game_id: currentGame.id,
+      score: parseInt(document.querySelector('#player-2-score span').textContent)
+    })
+  })
 }
 
 function getAudio(word){
@@ -258,28 +278,47 @@ function boxToDone(box){
 }
 
 function endGame(){
-  addWinnerToGame(winner())
+  // addScoresToSessions(user1, user2)
+  manageWinner()
   let canvas = document.createElement('canvas')
   canvas.id = 'canvas'
   document.querySelector('body').appendChild(canvas)
   throwConfetti()
   setTimeout(() => {
     document.querySelector('canvas').remove()
+    document.getElementById('winner_div').remove()
     clearBoard()
-  }, 5000)
+  }, 8000)
 }
 
-function winner(){
+function manageWinner(){
   let p1_score = parseInt(document.querySelector('#player-1-score span').textContent)
   let p2_score = parseInt(document.querySelector('#player-2-score span').textContent)
-  if (p1_score > p2_score) { 
-    return user1
-  } else if (p2_score > p1_score){
-    return user2
-  } else {
+  if (p1_score === p2_score){
     alert("It's a tie, play a new game!")
     clearBoard()
+  } else if (p1_score > p2_score) { 
+    winnerBanner(user1)
+    addWinnerToGame(user1)  
+  } else if (p2_score > p1_score){
+    winnerBanner(user2)
+    addWinnerToGame(user2)
   }
+}
+
+function winnerBanner(user){
+  let div = document.createElement('div')
+  div.id ="winner_div"
+  div.style.textAlign = 'center'
+  div.style.backgroundImage = 'url(https://image.freepik.com/free-vector/party-background-with-balloons-birthday-flags-purple_159711-113.jpg)'
+  div.style.backgroundPosition = 'center'
+  div.style.backgroundRepeat = 'no-repeat'
+  div.style.backgroundSize = 'cover'
+  let h2 = document.createElement('h2')
+  h2.textContent = `${user} is the winner!!`
+  h2.style.fontSize = '100px'
+  div.appendChild(h2)
+  document.querySelector('body').appendChild(div)
 }
 
 function addToCorrectColumn(word){

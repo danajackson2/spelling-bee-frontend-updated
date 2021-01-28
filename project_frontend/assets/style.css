@@ -279,3 +279,10 @@ table{
   left:85%;
   transform: translate(-50%, -50%);
 }
+
+#winner-div {
+  background-image: url('https://image.freepik.com/free-vector/party-background-with-balloons-birthday-flags-purple_159711-113.jpg');
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+}
