@@ -45,8 +45,7 @@ function newUser(e){
 }
 
 function login(e, num){
-  debugger
-    if (document.getElementById(`player-${num}-name`)){
+    if (document.getElementById(`player-${num}-name`).textContent === `PLAYER ${num}`){
       e.preventDefault()
       let name = e.target.querySelector('input').value
       fetch(USERS_URL)
@@ -59,7 +58,7 @@ function login(e, num){
               populateUser(name, num)
           }
       })
-  }
+    }
 }
 
 function newGame(u1, u2, num=4){
@@ -84,11 +83,21 @@ function newGame(u1, u2, num=4){
 
 //DOM Changes
 function startGame(num){
-    document.getElementById('container').innerHTML = ""
-    counter = 0
-    createGrid(num);
-    currentPlayer = 1
-    document.querySelector('div.boxed').style.background = '#D0FFA3'
+   clearBoard()
+  counter = 0
+  createGrid(num);
+  currentPlayer = 1
+  document.querySelector('div.boxed').style.background = '#D0FFA3'
+}
+
+function clearBoard(){
+  document.getElementById('container').innerHTML = ""
+  document.querySelector('div.boxed').style.background = 'white'
+  document.querySelector('div.boxed2').style.background = 'white'
+  document.querySelectorAll('div.correct1 table td').forEach(el => el.remove())
+  document.querySelectorAll('div.incorrect1 table td').forEach(el => el.remove())
+  document.querySelectorAll('div.correct2 table td').forEach(el => el.remove())
+  document.querySelectorAll('div.incorrect2 table td').forEach(el => el.remove())
 }
 
 function newUserMenu(){
@@ -162,7 +171,7 @@ function hideRules(){
 }
 
 function showCard(e){
-  startTimer()
+  // startTimer()
   // document.querySelector('div.base-timer').style.display = "block"
   getWord(parseInt(e.target.innerText))
   currentBoxNum = e.target.id
@@ -216,7 +225,7 @@ function endGame(){
   throwConfetti()
   setTimeout(() => {
     document.querySelector('canvas').remove()
-    document.querySelector('div#container').innerHTML = ""
+    clearBoard()
   }, 5000)
 }
 
