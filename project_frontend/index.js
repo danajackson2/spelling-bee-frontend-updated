@@ -131,13 +131,14 @@ function startGame(num){
   counter = 0
   createGrid(num);
   currentPlayer = 1
-  document.querySelector('div.boxed').style.background = '#fff0ba'
+  document.querySelector('div.boxed').style.borderWidth = '18px'
+  document.querySelector('div.boxed').style.borderColor = '#FCAB04'
 }
 
 function clearBoard(){
   document.getElementById('container').innerHTML = ""
-  document.querySelector('div.boxed').style.background = 'white'
-  document.querySelector('div.boxed2').style.background = 'white'
+  document.querySelector('div.boxed').style.borderWidth = '2px'
+  document.querySelector('div.boxed2').style.borderWidth = 'green'
   document.querySelectorAll('div.correct1 table td').forEach(el => el.remove())
   document.querySelectorAll('div.incorrect1 table td').forEach(el => el.remove())
   document.querySelectorAll('div.correct2 table td').forEach(el => el.remove())
@@ -150,6 +151,7 @@ function newUserMenu(){
     if (!document.getElementById('new-user-form')){
         let form = document.createElement('form')
         form.id = 'new-user-form'
+        form.style.paddingRight = '20px'
         let label = document.createElement('label')
         label.textContent = "Username: "
         let input = document.createElement('input')
@@ -353,14 +355,18 @@ function addToIncorrectColumn(word){
 function togglePlayer(){
   if (currentPlayer === 1){
     currentPlayer = 2
-    document.querySelector('div.boxed2').style.background = '#fff0ba'
-    document.querySelector('div.boxed').style.background = 'white'
+    document.querySelector('div.boxed2').style.borderWidth = '18px'
+    document.querySelector('div.boxed2').style.borderColor = '#FCAB04'
+    document.querySelector('div.boxed').style.borderWidth= '2px'
+    document.querySelector('div.boxed').style.borderColor = 'green'
     document.getElementById('left-bee').style.display = 'None'
     document.getElementById('right-bee').style.display = 'block'
   } else {
     currentPlayer = 1
-    document.querySelector('div.boxed').style.background = '#fff0ba'
-    document.querySelector('div.boxed2').style.background = 'white'
+    document.querySelector('div.boxed').style.borderWidth = '18px'
+    document.querySelector('div.boxed').style.borderColor = '#FCAB04'
+    document.querySelector('div.boxed2').style.borderWidth= '2px'
+    document.querySelector('div.boxed2').style.borderColor = 'green'
     document.getElementById('right-bee').style.display = 'None'
     document.getElementById('left-bee').style.display = 'block'
   }
@@ -372,7 +378,7 @@ function updateScore(box){
     let num = currentPlayer
     let curr_row = parseInt(Math.floor((boxId-1)/curr_grid.length))
     let curr_col = ((boxId-1) % curr_grid.length)
-    let filledBoxes = 0
+    let filledBoxes = 1
     currentScore = parseInt(document.querySelector(`#player-${num}-score span`).textContent)
     neighbors = [[curr_row+1,curr_col],[curr_row,curr_col+1],[curr_row-1,curr_col],[curr_row,curr_col-1],[curr_row+1,curr_col+1],[curr_row-1,curr_col-1],[curr_row-1,curr_col+1],[curr_row+1,curr_col-1]]
     neighbors.forEach(neighbor => {

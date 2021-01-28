@@ -34,7 +34,7 @@ html, body {
 } 
 
 .boxed {
-  border: 1px solid green ;
+  border: 2px solid green ;
   width: 20%;
   height: 50%;
   
@@ -48,7 +48,7 @@ html, body {
 }
 
 .boxed2 {
-  border: 1px solid green ;
+  border: 2px solid green ;
   width: 20%;
   height: 50%;
 
@@ -122,12 +122,26 @@ ul{
   font-size: 48px;
 }
 
+.startgame{
+  height: 44px;
+  color: black;
+  font-size: large;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dropdown{
+  position: relative;
+  left: 150%;
+}
+
 #wordcard {
-  border: 2px solid black;
-  background: rgb(252, 179, 236);
+  text-align: center;
+  border: 2px solid green;
   display: None;
-  width: 50%;
-  height: 50%;
+  width: 30%;
+  height: 30%;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -149,6 +163,10 @@ ul{
   left: 44%;
   width: 200px;
   height: 50px;
+}
+
+#new-user-button {
+  padding-right: 20px;
 }
 
 body {
@@ -181,8 +199,8 @@ canvas {
 }
 
 #rules {
-  background-color: white;
-  border: 1px solid black;
+  background-color: rgb(176, 229, 250);
+  border: 2px solid green;
   display: None;
   width: 45%;
   height: 45%;
@@ -195,8 +213,8 @@ canvas {
 }
 
 #highscores {
-  background-color: white;
-  border: 1px solid black;
+  background-color: rgb(176, 229, 250);
+  border: 2px solid green;
   display: None;
   width: 45%;
   height: 45%;
