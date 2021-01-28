@@ -6,9 +6,11 @@ let currentGame = {}
 let currentBoxNum
 let counter = 0
 let curr_grid = []
+let timerInterval = null;
 const container = document.getElementById("container");
 const gems = ['assets/greengem.png','assets/whitegem.png','assets/purplegem.png','assets/redgem.png']
 addEventListeners()
+
 
 //API Calls
 function getWord(difficulty){
@@ -195,8 +197,8 @@ function hideRules(){
 }
 
 function showCard(e){
-  // createTimer()
-  // document.querySelector('div.base-timer').style.display = "block"
+  createTimer()
+  document.querySelector('div.base-timer').style.display = "block"
   getWord(parseInt(e.target.innerText))
   currentBoxNum = e.target.id
   let wordcard = document.getElementById('wordcard')
@@ -212,9 +214,8 @@ function addWordToCard(word){
 
 function evaluateAnswer(e, num){
   e.preventDefault()
-  // document.getElementById('app').innerHTML = ""
   let box = document.getElementById(`${num}`)
-  // document.querySelector('div.base-timer').style.display = "none"
+  document.querySelector('div.base-timer').style.display = "none"
   let answer = e.target.querySelector('input').value.toLowerCase()
   let correct = document.querySelector('#wordcard #correct-word').textContent.toLowerCase()
   if (answer === correct) {
@@ -353,8 +354,8 @@ function makeGrid(grid) {
   };
 };
 
-function createTimer()
-{
+function createTimer(){
+    clearInterval(timerInterval);
     const FULL_DASH_ARRAY = 283;
     const WARNING_THRESHOLD = 10;
     const ALERT_THRESHOLD = 5;

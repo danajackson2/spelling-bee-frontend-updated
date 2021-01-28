@@ -69,12 +69,10 @@ ul{
 
 
 .base-timer {
-  position: fixed;
+  position: absolute;
   width: 300px;
   height: 300px;
-  top: 70%;
-  left: 41%;
-  display: none;
+  transform: translate(-230%, 35%);
 }
 
 .base-timer__svg {
