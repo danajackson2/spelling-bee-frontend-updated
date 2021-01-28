@@ -3,47 +3,23 @@ let user1 = ""
 let user2 = ""
 let currentPlayer
 let currentGame = {}
+let currentBoxNum
+let counter = 0
+let curr_grid = []
+const container = document.getElementById("container");
 const gems = ['assets/greengem.png','assets/whitegem.png','assets/purplegem.png','assets/redgem.png']
 addEventListeners()
 
 //API Calls
-function getWord(points){
-  let min
-  let max
-  if (points === 1){
-      min = 5
-      max = 7
-  } else if (points === 2){
-      min = 8
-      max = 10
-  } else {
-      min = 11
-      max = 13
-  }
-  fetch(`https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=${min}&maxLength=${max}&api_key=cu7u7wkgtpw6qy1dk3dntx8j5mg44xqx87painf5jh5k8blrm`)
+function getWord(difficulty){
+  fetch(`${WORDS_URL}/${difficulty}`)
   .then(res => res.json())
-  .then(object => {
-      getAudio(object['word'])
-      getDefinition(object['word'])
-      addWordToCard(object['word'])
-  })
-}
-function getAudio(word){
-  debugger
-    fetch(`https://api.wordnik.com/v4/word.json/${word}/audio?useCanonical=false&limit=50&api_key=cu7u7wkgtpw6qy1dk3dntx8j5mg44xqx87painf5jh5k8blrm`)
-    .then(res => res.json())
-    .then(object => {
-          addAudioToCard(object[0]['fileUrl'])
-    })
-}
-function getDefinition(word){
-    fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=200&includeRelated=false&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=cu7u7wkgtpw6qy1dk3dntx8j5mg44xqx87painf5jh5k8blrm`)
-    .then(res => res.json())
-    .then(object => addDefinitionToCard(object[1].text))
+  .then(object => addWordToCard(object))
 }
 
 //Backend Fetches
 const BASE_URL = 'http://localhost:3000'
+const WORDS_URL = `${BASE_URL}/words`
 const USERS_URL = `${BASE_URL}/users`
 const GAMES_URL = `${BASE_URL}/games`
 const SESSIONS_URL = `${BASE_URL}/sessions`
@@ -69,43 +45,50 @@ function newUser(e){
 }
 
 function login(e, num){
-    e.preventDefault()
-    let name = e.target.querySelector('input').value
-    fetch(USERS_URL)
-    .then(res => res.json())
-    .then(users => {
-        if (users.find(user => user.name === name) === undefined){
-            alert("User does not exist.")
-        } else {
-            document.querySelector(`#player-${num}-login input`).value = ""
-            populateUser(name, num)
-        }
-    })
+  debugger
+    if (document.getElementById(`player-${num}-name`)){
+      e.preventDefault()
+      let name = e.target.querySelector('input').value
+      fetch(USERS_URL)
+      .then(res => res.json())
+      .then(users => {
+          if (users.find(user => user.name === name) === undefined){
+              alert("User does not exist.")
+          } else {
+              document.querySelector(`#player-${num}-login input`).value = ""
+              populateUser(name, num)
+          }
+      })
+  }
 }
 
-function newGame(u1, u2){
-  if (u1 === "" || u2 === ""){
-    alert("Log in both players before starting a new game.")
-  } else {
-    startGame()
-    fetch(GAMES_URL, {
-        method: 'POST',
-        headers: {'content-type':'application/json'},
-        body: JSON.stringify({
-            user1: u1,
-            user2: u2
-        })
-    })
-    .then(res => res.json())
-    .then(object => currentGame = object)
+function newGame(u1, u2, num=4){
+  if (document.getElementById('1') === null || counter === curr_grid.length**2){
+    if (u1 === "" || u2 === ""){
+      alert("Log in both players before starting a new game.")
+    } else {
+      startGame(num)
+      fetch(GAMES_URL, {
+          method: 'POST',
+          headers: {'content-type':'application/json'},
+          body: JSON.stringify({
+              user1: u1,
+              user2: u2
+          })
+      })
+      .then(res => res.json())
+      .then(object => currentGame = object)
+    }
   }
 }
 
 //DOM Changes
-function startGame(){
-  makeRows(6,6);
-  currentPlayer = 1
-  document.querySelector('div.boxed').style.background = '#D0FFA3'
+function startGame(num){
+    document.getElementById('container').innerHTML = ""
+    counter = 0
+    createGrid(num);
+    currentPlayer = 1
+    document.querySelector('div.boxed').style.background = '#D0FFA3'
 }
 
 function newUserMenu(){
@@ -137,8 +120,6 @@ function populateUser(name, num){
 }
 
 //Event Listeners
-const container = document.getElementById("container");
-
 function addEventListeners(){
   let rulesnav = document.querySelector('li.rulesnav')
   let closeBtn = document.getElementsByClassName('close')[0]
@@ -148,7 +129,25 @@ function addEventListeners(){
   document.getElementById('new-user-button').addEventListener('click', newUserMenu)
   document.getElementById('player-1-login').addEventListener('submit', (e) => login(e, 1))
   document.getElementById('player-2-login').addEventListener('submit', (e) => login(e, 2))
-  document.querySelector('button.new-game').addEventListener('click', () => newGame(user1, user2))
+  // document.querySelector('button.new-game').addEventListener('click', () => newGame(user1, user2))
+
+  document.getElementById('answer').addEventListener('submit', (e) => evaluateAnswer(e, currentBoxNum))
+
+  document.getElementById('bee1').addEventListener('click', () => {
+    document.getElementById('container').innerHTML = ""
+    curr_grid = []
+    newGame(user1, user2, 2)
+  })
+  document.getElementById('bee2').addEventListener('click', () => {
+    document.getElementById('container').innerHTML = ""
+    curr_grid = []
+    newGame(user1, user2, 4)
+  })
+  document.getElementById('bee3').addEventListener('click', () => {
+    document.getElementById('container').innerHTML = ""
+    curr_grid = []
+    newGame(user1, user2, 6)
+  })
 }
 
 function showRules(){
@@ -163,50 +162,62 @@ function hideRules(){
 }
 
 function showCard(e){
-    getWord(parseInt(e.target.innerText))
-    let selectedBox = e.target
-    debugger
-    let wordcard = document.getElementById('wordcard')
-    wordcard.style.display = 'block'
-    wordcard.style.background = 'darkgray'
-    document.getElementById('answer').addEventListener('submit', (e) => evaluateAnswer(e, selectedBox))
-    e.target.removeEventListener('click', showCard)
+  startTimer()
+  // document.querySelector('div.base-timer').style.display = "block"
+  getWord(parseInt(e.target.innerText))
+  currentBoxNum = e.target.id
+  let wordcard = document.getElementById('wordcard')
+  wordcard.style.display = 'block'
+  wordcard.style.background = 'darkgray'
 }
 
 function addWordToCard(word){
-    document.querySelector('#correct-word').value = word
+    document.querySelector('#audio-source').src = word.url
+    document.querySelector('#definition').textContent = word.definition
+    document.querySelector('#correct-word').textContent = word.name
 }
 
-function addAudioToCard(url){
-    document.getElementById('audio-source').src = url
-}
-
-function addDefinitionToCard(def){
-    document.getElementById('definition').textContent = `Word definition: ${def}`
-}
-
-function evaluateAnswer(e, box){
-  debugger
+function evaluateAnswer(e, num){
   e.preventDefault()
+  let box = document.getElementById(`${num}`)
+  // document.querySelector('div.base-timer').style.display = "none"
   let answer = e.target.querySelector('input').value.toLowerCase()
-  let correct = document.querySelector('#wordcard #correct-word').value.toLowerCase()
+  let correct = document.querySelector('#wordcard #correct-word').textContent.toLowerCase()
   if (answer === correct) {
     updateScore(box.innerText)
     addToCorrectColumn(answer)
     boxToDone(box)
+    box.removeEventListener('click', showCard)
   } else {
     addToIncorrectColumn(correct)
   }
-  document.getElementById('answer').removeEventListener('submit', (e) => evaluateAnswer(e, box))
   document.querySelector('form#answer input').value = ""
   document.getElementById('wordcard').style.display = "None"
   togglePlayer()
 }
 
 function boxToDone(box){
-    box.textContent = 'X'
-    box.style.color = 'white'
-    box.style.backgroundColor = 'red'
+  box.textContent = 'X'
+  box.style.color = 'white'
+  box.style.backgroundColor = 'red'
+  let row = Math.floor((box.id-1)/curr_grid.length)
+  let column = (box.id-1)%curr_grid.length
+  curr_grid[row][column] = 0
+  counter += 1
+  if (counter === curr_grid.length * curr_grid.length){
+    endGame()
+  }
+}
+
+function endGame(){
+  let canvas = document.createElement('canvas')
+  canvas.id = 'canvas'
+  document.querySelector('body').appendChild(canvas)
+  throwConfetti()
+  setTimeout(() => {
+    document.querySelector('canvas').remove()
+    document.querySelector('div#container').innerHTML = ""
+  }, 5000)
 }
 
 function addToCorrectColumn(word){
@@ -242,26 +253,34 @@ function togglePlayer(){
 function updateScore(points){
     let num = currentPlayer
     currentScore = parseInt(document.querySelector(`#player-${num}-score span`).textContent)
-    newScore = currentScore + points
+    newScore = currentScore + parseInt(points)
     document.querySelector(`#player-${num}-score span`).textContent = newScore
 }
 
-function makeRows(rows, cols) {
+function createGrid(n){
+  for (let i = 0; i < n; i++) {
+    curr_grid[i] = [];
+    for (let j = 0; j < n; j++){
+        curr_grid[i][j] = Math.floor(Math.random() * 3) + 1
+    }
+    }
+    makeGrid(curr_grid)
+}
+
+function makeGrid(grid) {
+  let rows = grid.length
+  let cols = grid.length
   container.style.setProperty('--grid-rows', rows);
   container.style.setProperty('--grid-cols', cols);
   for (c = 0; c < (rows * cols); c++) {
     let cell = document.createElement("div");
-    var gem = gems[Math.floor(Math.random() * gems.length)];
-    // console.log(gem)
-    cell.style=`background-image: url(${gem});`
-    cell.innerText = Math.floor(Math.random() * 3) + 1
+    cell.innerText = grid[Math.floor(c/rows)][c%rows]
     cell.id = c+1;
     cell.addEventListener('click',showCard)
     cell.onmouseover="" 
     cell.style="cursor: pointer;"
     // cell.style.width = '100%' ;
     // cell.style.height = '100%';
-
     if (cell.innerText == '1'){
         cell.style.backgroundColor = '#f2f2f2';
         cell.style.color = 'black'
@@ -282,6 +301,42 @@ function makeRows(rows, cols) {
   };
 };
 
+// function makeRows(rows, cols) {
+//   container.style.setProperty('--grid-rows', rows);
+//   container.style.setProperty('--grid-cols', cols);
+//   for (c = 0; c < (rows * cols); c++) {
+//     let cell = document.createElement("div");
+//     var gem = gems[Math.floor(Math.random() * gems.length)];
+//     // console.log(gem)
+//     cell.style=`background-image: url(${gem});`
+//     cell.innerText = Math.floor(Math.random() * 3) + 1
+//     cell.id = c+1;
+//     cell.addEventListener('click',showCard)
+//     cell.onmouseover="" 
+//     cell.style="cursor: pointer;"
+//     // cell.style.width = '100%' ;
+//     // cell.style.height = '100%';
+
+//     if (cell.innerText == '1'){
+//         cell.style.backgroundColor = '#f2f2f2';
+//         cell.style.color = 'black'
+//         cell.style.fontSize = '30px'
+//     }
+//     else if(cell.innerText == '2'){
+//         cell.style.backgroundColor = '#595959';
+//         cell.style.color = 'white'
+//         cell.style.fontSize = '30px'
+//     }
+//     else if
+//     (cell.innerText == '3'){
+//         cell.style.backgroundColor = '#000000'
+//         cell.style.color = 'white'
+//         cell.style.fontSize = '30px'
+//     }
+//     container.appendChild(cell).className = "grid-item";
+//   };
+// };
+
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
@@ -300,10 +355,19 @@ const COLOR_CODES = {
   }
 };
 
-const TIME_LIMIT = 20;
+
+function onTimesUp() {
+  clearInterval(timerInterval);
+  document.querySelector('div.base-timer').style.display = "none"
+  document.querySelector('form#answer input').value = ""
+  document.getElementById('wordcard').style.display = "None"
+  togglePlayer()
+}
+
+const TIME_LIMIT = 3;
 let timePassed = 0;
-let timeLeft = TIME_LIMIT;
 let timerInterval = null;
+let timeLeft = TIME_LIMIT;
 let remainingPathColor = COLOR_CODES.info.color;
 
 document.getElementById("app").innerHTML = `
@@ -330,13 +394,8 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-startTimer();
-
-function onTimesUp() {
-  clearInterval(timerInterval);
-}
-
 function startTimer() {
+
   timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
@@ -396,70 +455,71 @@ function setCircleDasharray() {
     .setAttribute("stroke-dasharray", circleDasharray);
 }
 
-// const canvasEl = document.querySelector('#canvas');
+function throwConfetti(){
+  const canvasEl = document.querySelector('#canvas');
+  const w = canvasEl.width = window.innerWidth;
+  const h = canvasEl.height = window.innerHeight * 2;
 
-// const w = canvasEl.width = window.innerWidth;
-// const h = canvasEl.height = window.innerHeight * 2;
+  function loop() {
+    requestAnimationFrame(loop);
+    ctx.clearRect(0,0,w,h);
+    
+    confs.forEach((conf) => {
+      conf.update();
+      conf.draw();
+    })
+  }
 
-// function loop() {
-//   requestAnimationFrame(loop);
-// 	ctx.clearRect(0,0,w,h);
-  
-//   confs.forEach((conf) => {
-//     conf.update();
-//     conf.draw();
-//   })
-// }
+  function Confetti () {
+    //construct confetti
+    const colours = ['#fde132', '#009bde', '#ff6b00'];
+    
+    this.x = Math.round(Math.random() * w);
+    this.y = Math.round(Math.random() * h)-(h/2);
+    this.rotation = Math.random()*360;
 
-// function Confetti () {
-//   //construct confetti
-//   const colours = ['#fde132', '#009bde', '#ff6b00'];
-  
-//   this.x = Math.round(Math.random() * w);
-//   this.y = Math.round(Math.random() * h)-(h/2);
-//   this.rotation = Math.random()*360;
+    const size = Math.random()*(w/60);
+    this.size = size < 15 ? 15 : size;
 
-//   const size = Math.random()*(w/60);
-//   this.size = size < 15 ? 15 : size;
+    this.color = colours[Math.floor(colours.length * Math.random())];
 
-//   this.color = colours[Math.floor(colours.length * Math.random())];
+    this.speed = this.size/2;
+    
+    this.opacity = Math.random();
 
-//   this.speed = this.size/2;
-  
-//   this.opacity = Math.random();
+    this.shiftDirection = Math.random() > 0.5 ? 1 : -1;
+  }
 
-//   this.shiftDirection = Math.random() > 0.5 ? 1 : -1;
-// }
+  Confetti.prototype.border = function() {
+    if (this.y >= h) {
+      this.y = h;
+    }
+  }
 
-// Confetti.prototype.border = function() {
-//   if (this.y >= h) {
-//     this.y = h;
-//   }
-// }
+  Confetti.prototype.update = function() {
+    this.y += this.speed;
+    
+    if (this.y <= h) {
+      this.x += this.shiftDirection/3;
+      this.rotation += this.shiftDirection*this.speed/100;
+    }
 
-// Confetti.prototype.update = function() {
-//   this.y += this.speed;
-  
-//   if (this.y <= h) {
-//     this.x += this.shiftDirection/3;
-//     this.rotation += this.shiftDirection*this.speed/100;
-//   }
+    if (this.y > h) this.border();
+  };
 
-//   if (this.y > h) this.border();
-// };
+  Confetti.prototype.draw = function() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation+(Math.PI/2));
+    ctx.lineTo(this.x, this.y);
+    ctx.closePath();
+    ctx.globalAlpha = this.opacity;
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  };
 
-// Confetti.prototype.draw = function() {
-//   ctx.beginPath();
-//   ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation+(Math.PI/2));
-//   ctx.lineTo(this.x, this.y);
-//   ctx.closePath();
-//   ctx.globalAlpha = this.opacity;
-//   ctx.fillStyle = this.color;
-//   ctx.fill();
-// };
+  const ctx = canvasEl.getContext('2d');
+  const confNum = Math.floor(w / 4);
+  const confs = new Array(confNum).fill().map(_ => new Confetti());
 
-// const ctx = canvasEl.getContext('2d');
-// const confNum = Math.floor(w / 4);
-// const confs = new Array(confNum).fill().map(_ => new Confetti());
-
-// loop();
+  loop();
+}

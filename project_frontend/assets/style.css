@@ -71,7 +71,7 @@ ul{
   height: 300px;
   top: 70%;
   left: 41%;
-
+  display: none;
 }
 
 .base-timer__svg {
@@ -193,9 +193,7 @@ canvas {
   transform: translate(-50%, -50%);
 }
 
-#
-
-{
+# {
   border: 3px solid black;
   background-color: lightgray;
   display: None;
