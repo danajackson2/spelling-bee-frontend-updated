@@ -3,8 +3,18 @@ class UsersController < ApplicationController
         render json: User.create(user_params)
     end
 
-    def index
-        render json: User.all
+    # def index
+    #     User.all
+    #     render json: User.all
+    # end
+
+    def login
+        user = User.all.find_by(name: params["username"])
+        if user != nil
+            render json: user
+        else
+            render json: {message: "User does not exist."}
+        end
     end
 
     private
