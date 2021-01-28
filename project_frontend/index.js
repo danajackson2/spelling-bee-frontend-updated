@@ -157,15 +157,17 @@ function populateUser(name, num){
 //Event Listeners
 function addEventListeners(){
   let rulesnav = document.querySelector('li.rulesnav')
+  let scoreboard = document.getElementsByClassName('scoreboard')[0]
+  let closescores = document.getElementById('closescores')
   let closeBtn = document.getElementsByClassName('close')[0]
   rulesnav.addEventListener('click',showRules)
   closeBtn.addEventListener('click',hideRules)
-
+  scoreboard.addEventListener('click',showScores)
+  closescores.addEventListener('click',hideScores)
   document.getElementById('new-user-button').addEventListener('click', newUserMenu)
   document.getElementById('player-1-login').addEventListener('submit', (e) => login(e, 1))
   document.getElementById('player-2-login').addEventListener('submit', (e) => login(e, 2))
   // document.querySelector('button.new-game').addEventListener('click', () => newGame(user1, user2))
-
   document.getElementById('answer').addEventListener('submit', (e) => evaluateAnswer(e, currentBoxNum))
 
   document.getElementById('bee1').addEventListener('click', () => {
@@ -190,10 +192,22 @@ function showRules(){
     rules.style.display = 'block'
 }
 
+function showScores(){
+  let scores = document.getElementById('highscores')
+  scores.style.display = 'block'
+}
+
+
 function hideRules(){
     let wordcard = document.getElementById('rules')
     wordcard.style.display = 'None'
 }
+
+function hideScores(){
+  let highscores = document.getElementById('highscores')
+  highscores.style.display = 'None'
+}
+
 
 function showCard(e){
   createTimer()
