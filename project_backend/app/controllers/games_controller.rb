@@ -13,10 +13,14 @@ class GamesController < ApplicationController
         render json: Game.all
     end
 
-    def udpate
-        # add game winner to the Game record
-        # game = Game.find(params[:id])
-        # game.winner = user
+    def update
+        Game.find(params[:id]).update(winner: game_params["winner"])
+        render json: Game.find(params[:id])
     end
 
+    private
+
+    def game_params
+        params.require('game').permit('winner')
+    end
 end
