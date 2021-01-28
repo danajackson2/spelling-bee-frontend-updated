@@ -12,7 +12,7 @@ html, body {
   grid-template-rows: repeat(var(--grid-rows), 1fr);
   grid-template-columns: repeat(var(--grid-cols), 1fr);
   position: fixed;
-  top: 50%;
+  top: 45%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
@@ -72,7 +72,7 @@ ul{
   position: absolute;
   width: 300px;
   height: 300px;
-  transform: translate(-230%, 35%);
+  transform: translate(-180%,70%);
 }
 
 .base-timer__svg {
@@ -222,8 +222,6 @@ canvas {
 table{
   text-align: center;
 }
-
-
 
 
 .dropdown {

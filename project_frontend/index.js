@@ -198,7 +198,7 @@ function hideRules(){
 
 function showCard(e){
   createTimer()
-  document.querySelector('div.base-timer').style.display = "block"
+  document.querySelector('#app').style.display = "block"
   getWord(parseInt(e.target.innerText))
   currentBoxNum = e.target.id
   let wordcard = document.getElementById('wordcard')
@@ -215,7 +215,7 @@ function addWordToCard(word){
 function evaluateAnswer(e, num){
   e.preventDefault()
   let box = document.getElementById(`${num}`)
-  document.querySelector('div.base-timer').style.display = "none"
+  document.querySelector('#app').style.display = "none"
   let answer = e.target.querySelector('input').value.toLowerCase()
   let correct = document.querySelector('#wordcard #correct-word').textContent.toLowerCase()
   if (answer === correct) {
@@ -375,7 +375,6 @@ function createTimer(){
  
     const TIME_LIMIT = 30;
     let timePassed = 0;
-    let timerInterval = null;
     let timeLeft = TIME_LIMIT;
     let remainingPathColor = COLOR_CODES.info.color;
     document.getElementById("app").innerHTML = `
