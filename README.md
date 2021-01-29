@@ -42,6 +42,7 @@ For a quick demo, follow the link (https://www.youtube.com/watch?v=vnxJSvTS2KM&f
 6. The game ends when all squares are marked as done!
 
 <img width="1391" alt="Screen Shot 2021-01-29 at 10 55 23 AM" src="https://user-images.githubusercontent.com/19844780/106317282-f2644600-6222-11eb-9e92-dbd3d929ca6f.png" >
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vnxJSvTS2KM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <h3>Contributors</h3>
 
