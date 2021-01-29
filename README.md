@@ -1,23 +1,33 @@
-SPELLING BEE GAME
+<h2>SPELLING BEE 🐝 </h2>
 
-Prerequisites
+<h3>Prerequisites</h3>
 
 Before you begin, ensure you have met the following requirements:
+<ul>
+<li>You have installed version <Ruby/2.6.1> </li>
+<li>You have insalled <Rails 6.0.3.4> </li>
+<li>A working installation of the SQLite3 Database. </li>
+<li>You have installed (https://bundler.io/). </li>
+<li>You have a Windows/Mac machine.</li>
+  </ul>
 
-1. You have installed version <Ruby/2.6.1>
-2. You have insalled <Rails 6.0.3.4>
-3. A working installation of the SQLite3 Database.
-4. You have installed (https://bundler.io/).
-5. You have a Windows/Mac machine.
+<h3>Installing Spelling Bee</h3>
 
-Instructions
+To install Spelling Bee, follow these steps:
 
-1. Clone the repo to your local machine
-2. Navigate to the project_backend folder and run 'bundle install'. Run 'rails s' to start the server.
-3. Navigate to the project_frontend folder and open 'index.html' in your browser.
+1. Navigate to (https://github.com/danajackson2/phase-3-project/) to clone the project.
+2. Create a directory where you would like to store the file.
+3. Navigate into that directory and use the command: git clone <project-SSH>
+
+<h3>Instructions</h3>
+
+For a quick demo, follow the link (https://www.youtube.com/watch?v=vnxJSvTS2KM&feature=youtu.be) To use Spelling Bee, follow these steps after forking, in your terminal:
+
+1. Navigate to the project_backend folder and run 'bundle install'. Run 'rails s' to start the server.
+2. Navigate to the project_frontend folder and open 'index.html' in your browser.
 
 
-How To Play?
+<h3>How To Play?</h3>
 
 1. Sign In as an existing user or Sign Up (& Sign In) as a new user to start playing
 
@@ -30,4 +40,21 @@ How To Play?
 5. When you answer incorrectly or run out of time, the selected square remains open for re-selection. The game switches to your opponent's turn.
 
 6. The game ends when all squares are marked as done!
+
+<img width="1391" alt="Screen Shot 2021-01-29 at 10 55 23 AM" src="https://user-images.githubusercontent.com/19844780/106317282-f2644600-6222-11eb-9e92-dbd3d929ca6f.png" >
+
+<h3>Contributors</h3>
+
+Thanks to the following people who have contributed to this project:
+
+<a href ="https://github.com/danajackson2/">@danajackson</a> 📖 🐛<br>
+<a href ="https://github.com/shreya-sridhar"> @shreyasridhar</a>📖 🐛
+
+<h3>Contact</h3>
+
+If you want to contact us you can reach us at or danajackson2@gmail.com or shreyasridhar1109@gmail.com
+
+<h3>License</h3>
+
+This project uses the following license: Learn.co Educational Content License.
 
