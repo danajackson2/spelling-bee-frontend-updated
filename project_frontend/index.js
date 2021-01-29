@@ -328,6 +328,7 @@ function manageWinner(){
   let p2_score = parseInt(document.querySelector('#player-2-score span').textContent)
   if (p1_score === p2_score){
     alert("It's a tie, play a new game!")
+    addScoreToSession1(session1)
     clearBoard()
   } else if (p1_score > p2_score) { 
     winnerBanner(user1)
