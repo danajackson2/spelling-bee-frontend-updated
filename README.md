@@ -1,5 +1,15 @@
 SPELLING BEE GAME
 
+Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+1. You have installed version <Ruby/2.6.1>
+2. You have insalled <Rails 6.0.3.4>
+3. A working installation of the SQLite3 Database.
+4. You have installed (https://bundler.io/).
+5. You have a Windows/Mac machine.
+
 Instructions
 
 1. Clone the repo to your local machine
