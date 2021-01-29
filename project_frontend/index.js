@@ -3,6 +3,8 @@ let user1 = ""
 let user2 = ""
 let currentPlayer
 let currentGame = {}
+let session1 = {}
+let session2 = {}
 let currentBoxNum
 let counter = 0
 let curr_grid = []
@@ -82,7 +84,11 @@ function newGame(u1, u2, num=4){
           })
       })
       .then(res => res.json())
-      .then(object => currentGame = object)
+      .then(object => {  
+      session1 = object[1]
+      session2 = object[2]
+      currentGame = object[0]
+      })
     }
   }
 }
@@ -95,28 +101,35 @@ function addWinnerToGame(user){
         winner: user
     })
 })
+.then(res => addScoreToSession1(session1))
 }
 
-function addScoresToSessions(user1, user2){
-  fetch(`${SESSIONS_URL}`,{
+ function addScoreToSession1(s1){
+  fetch(`${SESSIONS_URL}/${s1.id}`,{
     method: 'PATCH',
     headers: {'content-type':'application/json'},
     body: JSON.stringify({
-      user: user1,
-      game_id: currentGame.id,
       score: parseInt(document.querySelector('#player-1-score span').textContent)
     })
   })
+  .then(res => addScoreToSession2(session2))
+}
 
-  fetch(`${SESSIONS_URL}`,{
+function addScoreToSession2(s2){
+  fetch(`${SESSIONS_URL}/${s2.id}`,{
     method: 'PATCH',
     headers: {'content-type':'application/json'},
     body: JSON.stringify({
-      user: user1,
-      game_id: currentGame.id,
       score: parseInt(document.querySelector('#player-2-score span').textContent)
     })
   })
+}
+
+function getTop5Scores(){
+  fetch(`${SESSIONS_URL}`)
+  .then(res => res.json())
+  // .then(console.log)
+  .then(data => renderScores(data))
 }
 
 function getAudio(word){
@@ -189,7 +202,6 @@ function addEventListeners(){
   document.getElementById('new-user-button').addEventListener('click', newUserMenu)
   document.getElementById('player-1-login').addEventListener('submit', (e) => login(e, 1))
   document.getElementById('player-2-login').addEventListener('submit', (e) => login(e, 2))
-  // document.querySelector('button.new-game').addEventListener('click', () => newGame(user1, user2))
   document.getElementById('answer').addEventListener('submit', (e) => evaluateAnswer(e, currentBoxNum))
 
   document.getElementById('bee1').addEventListener('click', () => {
@@ -216,7 +228,19 @@ function showRules(){
 
 function showScores(){
   let scores = document.getElementById('highscores')
+  scores.querySelector('ul').innerHTML = ""
   scores.style.display = 'block'
+  getTop5Scores()
+}
+
+function renderScores(data){
+  let ul = document.getElementById('scores')
+  Object.keys(data).forEach((name) => { 
+    let score = data[name]
+    let li = document.createElement('li') 
+    li.textContent = `${score} points - ${name}`
+    ul.appendChild(li)
+  })
 }
 
 
@@ -280,12 +304,10 @@ function boxToDone(box){
 }
 
 function endGame(){
-  // addScoresToSessions(user1, user2)
   manageWinner()
   let canvas = document.createElement('canvas')
   canvas.id = 'canvas'
   document.querySelector('body').appendChild(canvas)
-  debugger
   throwConfetti()
   setTimeout(() => {
     document.querySelector('canvas').remove()
@@ -389,7 +411,6 @@ function updateScore(box){
     })
     newScore = currentScore + parseInt(points)*filledBoxes
     document.querySelector(`#player-${num}-score span`).textContent = newScore
-    debugger
 }
 
 function createGrid(n){

@@ -3,6 +3,5 @@ Rails.application.routes.draw do
   post 'users/login/:id', to: 'users#login'
   resources :games, only: [:create, :index, :update]
   resources :words, only: [:show]
-  resources :sessions, only:[:update]
-  patch 'sessions', to: 'sessions#score'
+  resources :sessions, only: [:update, :index]
 end

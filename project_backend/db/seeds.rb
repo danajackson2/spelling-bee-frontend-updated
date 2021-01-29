@@ -10,8 +10,26 @@
 #   word.definition = word.getDefinition
 #   word.save if word.url != "" && word.definition != ""
 # end
-
 Word.destroy_all
+User.destroy_all
+Session.destroy_all
+Game.destroy_all
+
+a = User.create(name: "Boogie Bill")
+b = User.create(name: "Dan the Man")
+c = User.create(name: "Lilly the Lioness")
+d = User.create(name: "Bag o' Bones")
+
+e = Game.create(winner: "")
+f = Game.create(winner: "")
+g = Game.create(winner: "")
+h = Game.create(winner: "")
+
+Session.create(user_id: a.id, score: 45, game_id: e.id)
+Session.create(user_id: b.id, score: 19, game_id: f.id)
+Session.create(user_id: c.id, score: 3, game_id: g.id)
+Session.create(user_id: d.id, score: 100, game_id: h.id)
+
 Word.create(name: 'movie', difficulty: 1, url: '', definition: "A recorded sequence of film or video images displayed on a screen with sufficient rapidity as to create the illusion of motion and continuity.")
 Word.create(name: 'whine', difficulty: 1, url: '', definition: "To complain or protest in a childish or annoying fashion.")
 Word.create(name: 'piper', difficulty: 1, url: '', definition: "One who plays on a metal wind instrument.")
@@ -48,4 +66,14 @@ Word.create(name: 'mildew', difficulty: 1, definition: 'a thin whitish coating c
 Word.create(name: 'outrageous', difficulty: 1, definition: 'shockingly bad or excessive', url: "")
 Word.create(name: 'bombard', difficulty: 1, definition: 'attack (a place or person) continuously with bombs, shells, or other missiles', url: "")
 Word.create(name: 'catalepsy', difficulty: 2, definition: 'a medical condition characterized by a trance or seizure with a loss of sensation and consciousness accompanied by rigidity of the body', url: "")
+Word.create(name: 'friend', difficulty: 1, definition: 'a person whom one knows and with whom one has a bond of mutual affection', url: "")
+Word.create(name: 'clothes', difficulty: 1, definition: 'items worn to cover the body', url: "")
+Word.create(name: 'fortune', difficulty: 1, definition: 'chance or luck as an external, arbitrary force affecting human affairs', url: "")
+Word.create(name: 'frontier', difficulty: 2, definition: 'a line or border separating two countries', url: "")
+Word.create(name: 'hiatus', difficulty: 2, definition: 'a pause or gap in a sequence, series, or process', url: "")
+Word.create(name: 'endorphin', difficulty: 2, definition: 'any of a group of hormones secreted within the brain and nervous system and having a number of physiological functions', url: "")
+Word.create(name: 'kerchief', difficulty: 2, definition: 'a piece of fabric used to cover the head, or worn tied around the neck', url: "")
+Word.create(name: 'unsullied', difficulty: 3, definition: 'not spoiled or made impure', url: "")
+Word.create(name: 'marquee', difficulty: 3, definition: 'a canopy projecting over the entrance to a theater, hotel, or other building', url: "")
+Word.create(name: 'heliacal', difficulty: 3, definition: 'relating to or near the sun', url: "")
 puts "seeding done"

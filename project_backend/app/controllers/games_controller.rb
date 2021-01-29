@@ -4,9 +4,9 @@ class GamesController < ApplicationController
         game = Game.create
         user1 = User.find_by(name:params["user1"])
         user2 = User.find_by(name:params["user2"])
-        Session.create(game_id:game.id, user_id: user1.id)
-        Session.create(game_id:game.id, user_id: user2.id)
-        render json: game
+        s1 = Session.create(game_id:game.id, user_id: user1.id)
+        s2 = Session.create(game_id:game.id, user_id: user2.id)
+        render json: [game, s1, s2]
     end
 
     def index
