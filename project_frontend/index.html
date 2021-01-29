@@ -9,6 +9,8 @@
   <meta name="author" content="SitePoint">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
   <script defer src="index.js"></script>
 </head>
 
@@ -52,12 +54,12 @@
   <button type="submit">Log in</button>
 </form>
 
-<img src = "http://clipart-library.com/images/yikA5jj4T.png" id = "left-bee" width ="70" height="70">
-<img src = "http://clipart-library.com/images/yikA5jj4T.png" id = "right-bee" width ="90" height="90">
+<img src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3a733a2-a526-43c0-b212-5824230ff90c/d7fqea5-baba964a-91a8-4050-b9e1-0b957ebb3c34.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYjNhNzMzYTItYTUyNi00M2MwLWIyMTItNTgyNDIzMGZmOTBjXC9kN2ZxZWE1LWJhYmE5NjRhLTkxYTgtNDA1MC1iOWUxLTBiOTU3ZWJiM2MzNC5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.R1O8v29Wq4RGx4VRUkPth8r5ugQ0ubDVq_VytjZpMX0" id = "left-bee" width ="150" height="150">
+<img src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3a733a2-a526-43c0-b212-5824230ff90c/d7fqea5-baba964a-91a8-4050-b9e1-0b957ebb3c34.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYjNhNzMzYTItYTUyNi00M2MwLWIyMTItNTgyNDIzMGZmOTBjXC9kN2ZxZWE1LWJhYmE5NjRhLTkxYTgtNDA1MC1iOWUxLTBiOTU3ZWJiM2MzNC5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.R1O8v29Wq4RGx4VRUkPth8r5ugQ0ubDVq_VytjZpMX0" id = "right-bee" width ="150" height="150">
 
   <div class="boxed" style='background-image:url(https://actforbees.org/wp-content/uploads/2016/02/HoneyComb-Background.png); background-position: center'>
-    <h3 id='player-1-name' style="text-align: center;">PLAYER 1</h3>
-    <h3 id='player-1-score' style="text-align: center;">SCORE: </h3>
+    <h3 id='player-1-name'>PLAYER 1</h3>
+    <h3 id='player-1-score'>SCORE: </h3>
     <div class = "correct1">
       <table style="width:100%">
         <tr>
@@ -80,11 +82,11 @@
     <h2 style ="text-align: center;">RULES</h2>
     <h4>
     <ol>
-      <li>Click on Start Game to start a new game</li><br>
-      <li>Select level of game. You guess lesser words on a lower level than on a  higher level</li><br>
-      <li>Numbers on the grid represent difficulty of the word in the card under the grid</li><br>
-      <li>Click on a grid cell, guess the words using the word pronunciation and definition to earn points. You have 30 seconds to guess the word</li><br>
-      <li>Bonus : Points are calculated as (Word Difficulty) X (Number of Unanswered Squares around the selected square)</li><br>
+      <li>Click on Start Game.</li><br>
+      <li>Select level.</li><br>
+      <li>Click a square to see a word, 1 for easy, 2 for medium, 3 for difficult.</li><br>
+      <li>Spell the word correctly within 30 seconds to get points.</li><br>
+      <li>Points: Selected square value + all neighboring values.</li><br>
     </ol>
   </h4>
   </div>

@@ -407,16 +407,16 @@ function updateScore(box){
     let num = currentPlayer
     let curr_row = parseInt(Math.floor((boxId-1)/curr_grid.length))
     let curr_col = ((boxId-1) % curr_grid.length)
-    let filledBoxes = 1
+    let filledBoxes = 0
     currentScore = parseInt(document.querySelector(`#player-${num}-score span`).textContent)
     neighbors = [[curr_row+1,curr_col],[curr_row,curr_col+1],[curr_row-1,curr_col],[curr_row,curr_col-1],[curr_row+1,curr_col+1],[curr_row-1,curr_col-1],[curr_row-1,curr_col+1],[curr_row+1,curr_col-1]]
     neighbors.forEach(neighbor => {
       if(neighbor[0]>=0 && neighbor[1]>=0 && neighbor[0]<curr_grid.length && neighbor[1]<curr_grid.length && curr_grid[neighbor[0]][neighbor[1]] != 0)
       {
-        filledBoxes += 1
+        filledBoxes += curr_grid[neighbor[0]][neighbor[1]]
       }
     })
-    newScore = currentScore + parseInt(points)*filledBoxes
+    newScore = currentScore + parseInt(points)+filledBoxes
     document.querySelector(`#player-${num}-score span`).textContent = newScore
 }
 
