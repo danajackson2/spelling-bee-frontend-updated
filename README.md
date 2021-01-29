@@ -43,8 +43,6 @@ For a quick demo, follow the link (https://www.youtube.com/watch?v=vnxJSvTS2KM&f
 
 <img width="1391" alt="Screen Shot 2021-01-29 at 10 55 23 AM" src="https://user-images.githubusercontent.com/19844780/106317282-f2644600-6222-11eb-9e92-dbd3d929ca6f.png" >
 
-[![phase-3-project](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=vnxJSvTS2KM&feature=youtu.be)
-
 <h3>Contributors</h3>
 
 Thanks to the following people who have contributed to this project:
