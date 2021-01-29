@@ -17,7 +17,7 @@ How To Play?
 
 4. When you answer correctly, the selected square is marked as done. You earn points equal to the difficulty of the word + difficulty levels of it's 8 surrounding neighboring squares
 
-5. When you answer incorrectly or run out of time, the selected square remains open for re-selection. The game switches to you opponent's turn.
+5. When you answer incorrectly or run out of time, the selected square remains open for re-selection. The game switches to your opponent's turn.
 
 6. The game ends when all squares are marked as done!
 
