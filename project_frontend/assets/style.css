@@ -14,7 +14,6 @@ html, body {
   position: fixed;
   top: 45%;
   left: 50%;
-  /* bring your own prefixes */
   transform: translate(-50%, -50%);
 }
 
@@ -149,10 +148,13 @@ ul{
   left: 50%;
   transform: translateX(-50%);
   background-color:rgb(255, 217, 0);
+  position:fixed;
+  z-index:2;
 }
 
 .dropdown{
   position: fixed;
+  z-index:1;
   left: 50%;
   transform: translateX(-50%);
 }
