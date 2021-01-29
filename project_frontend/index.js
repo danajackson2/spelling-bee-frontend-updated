@@ -166,17 +166,22 @@ function newUserMenu(){
         form.id = 'new-user-form'
         form.style.paddingRight = '20px'
         let label = document.createElement('label')
-        label.textContent = "Username: "
+        label.textContent = "Username:"
         let input = document.createElement('input')
         input.style = 'color:black'
-        input.placeholder = "Joe Schmoe"
+        input.placeholder = "Your Name"
+        input.style.marginLeft = '10px'
         let button = document.createElement('button')
         button.type = 'submit'
         button.textContent = "Submit"
         button.style = 'color:black'
+        button.style.marginLeft = '10px'
         form.append(label, input, button)
         document.getElementById('new-user-div').appendChild(form)
         form.addEventListener('submit', newUser)
+    } else {
+      document.getElementById('new-user-form').removeEventListener('submit', newUser)
+      document.getElementById('new-user-form').remove()
     }
 }
 
@@ -222,11 +227,13 @@ function addEventListeners(){
 }
 
 function showRules(){
+    document.getElementById('highscores').style.display = 'None'
     let rules = document.getElementById('rules')
     rules.style.display = 'block'
 }
 
 function showScores(){
+  document.getElementById('rules').style.display = 'None'
   let scores = document.getElementById('highscores')
   scores.querySelector('ul').innerHTML = ""
   scores.style.display = 'block'
