@@ -40173,3 +40173,343 @@ Processing by WordsController#show as */*
 Completed 200 OK in 11ms (Views: 1.7ms | ActiveRecord: 1.6ms | Allocations: 1226)
 
 
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWord Load (0.2ms)[0m  [1m[34mSELECT "words".* FROM "words"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 73]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 74]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 75]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 76]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 77]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 78]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 79]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 80]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 81]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 82]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 83]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 84]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 85]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 86]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 87]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 88]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 89]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 90]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 91]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 92]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 93]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 94]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 95]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 96]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 97]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 98]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 99]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 100]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 101]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 102]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 103]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 104]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 105]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 106]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 107]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 108]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 109]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 110]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 111]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 112]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 113]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 114]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 115]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 116]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 117]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Destroy (0.2ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = ?[0m  [["id", 118]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "movie"], ["difficulty", 1], ["url", ""], ["definition", "A recorded sequence of film or video images displayed on a screen with sufficient rapidity as to create the illusion of motion and continuity."], ["created_at", "2021-01-29 19:18:12.241077"], ["updated_at", "2021-01-29 19:18:12.241077"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "whine"], ["difficulty", 1], ["url", ""], ["definition", "To complain or protest in a childish or annoying fashion."], ["created_at", "2021-01-29 19:18:12.244277"], ["updated_at", "2021-01-29 19:18:12.244277"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "piper"], ["difficulty", 1], ["url", ""], ["definition", "One who plays on a metal wind instrument."], ["created_at", "2021-01-29 19:18:12.246904"], ["updated_at", "2021-01-29 19:18:12.246904"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "golden"], ["difficulty", 1], ["url", ""], ["definition", "Having the color of yellow metal."], ["created_at", "2021-01-29 19:18:12.249628"], ["updated_at", "2021-01-29 19:18:12.249628"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "sarcophagus"], ["difficulty", 2], ["url", ""], ["definition", "A species of stone used among the Greeks for making coffins. It was called by the Romans lapis Assius, from being found at Assos, a city of the Troad."], ["created_at", "2021-01-29 19:18:12.252288"], ["updated_at", "2021-01-29 19:18:12.252288"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "paisley"], ["difficulty", 2], ["url", ""], ["definition", "Having a colorful swirled pattern of abstract curved shapes. Used especially of fabric."], ["created_at", "2021-01-29 19:18:12.255055"], ["updated_at", "2021-01-29 19:18:12.255055"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "arpeggio"], ["difficulty", 2], ["url", ""], ["definition", "The sounding of the tones of a chord in rapid succession rather than simultaneously."], ["created_at", "2021-01-29 19:18:12.258304"], ["updated_at", "2021-01-29 19:18:12.258304"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "dumbwaiter"], ["difficulty", 2], ["url", ""], ["definition", "A small elevator used to convey food or other goods from one floor of a building to another."], ["created_at", "2021-01-29 19:18:12.261512"], ["updated_at", "2021-01-29 19:18:12.261512"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "arthralgia"], ["difficulty", 3], ["url", ""], ["definition", "Pain in a joint; specifically, neuralgia in a joint."], ["created_at", "2021-01-29 19:18:12.264332"], ["updated_at", "2021-01-29 19:18:12.264332"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "sedulous"], ["difficulty", 3], ["url", ""], ["definition", "Persevering and constant in effort or application; assiduous."], ["created_at", "2021-01-29 19:18:12.266960"], ["updated_at", "2021-01-29 19:18:12.266960"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "insouciance"], ["difficulty", 3], ["url", ""], ["definition", "Heedless indifference or unconcern; carelessness of feeling or manner."], ["created_at", "2021-01-29 19:18:12.269619"], ["updated_at", "2021-01-29 19:18:12.269619"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "hermeneutics"], ["difficulty", 3], ["url", ""], ["definition", "The theory and methodology of interpretation, especially of scriptural text."], ["created_at", "2021-01-29 19:18:12.272426"], ["updated_at", "2021-01-29 19:18:12.272426"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "laboratory"], ["difficulty", 2], ["url", ""], ["definition", "A room or building equipped for scientific experiments, research, or teaching, or for the manufacture of drugs or chemicals."], ["created_at", "2021-01-29 19:18:12.275148"], ["updated_at", "2021-01-29 19:18:12.275148"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "dream"], ["difficulty", 1], ["url", ""], ["definition", "A series of thoughts, images, and sensations occurring in a person's mind during sleep"], ["created_at", "2021-01-29 19:18:12.278140"], ["updated_at", "2021-01-29 19:18:12.278140"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "least"], ["difficulty", 1], ["url", ""], ["definition", "Smallest in amount, extent, or significance"], ["created_at", "2021-01-29 19:18:12.280909"], ["updated_at", "2021-01-29 19:18:12.280909"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "bottle"], ["difficulty", 1], ["url", ""], ["definition", "A container, typically made of glass or plastic and with a narrow neck, used for storing drinks or other liquids"], ["created_at", "2021-01-29 19:18:12.283681"], ["updated_at", "2021-01-29 19:18:12.283681"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "either"], ["difficulty", 1], ["url", ""], ["definition", "Used before the first of two (or occasionally more) alternatives that are being specified (the other being introduced by “or”)"], ["created_at", "2021-01-29 19:18:12.286451"], ["updated_at", "2021-01-29 19:18:12.286451"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "ventriloquy"], ["difficulty", 2], ["url", ""], ["definition", "The art or practice of making one's voice appear to come from somewhere else, typically a dummy of a person or animal"], ["created_at", "2021-01-29 19:18:12.289485"], ["updated_at", "2021-01-29 19:18:12.289485"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "demographics"], ["difficulty", 2], ["url", ""], ["definition", "Statistical data relating to the population and particular groups within it"], ["created_at", "2021-01-29 19:18:12.292448"], ["updated_at", "2021-01-29 19:18:12.292448"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "peripheral"], ["difficulty", 2], ["url", ""], ["definition", "Relating to or situated on the edge of something"], ["created_at", "2021-01-29 19:18:12.295672"], ["updated_at", "2021-01-29 19:18:12.295672"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "tangerine"], ["difficulty", 2], ["url", ""], ["definition", "A small citrus fruit with a loose skin, especially one of a variety with deep orange-red skin"], ["created_at", "2021-01-29 19:18:12.298477"], ["updated_at", "2021-01-29 19:18:12.298477"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "haphazard"], ["difficulty", 2], ["url", ""], ["definition", "Lacking any obvious principle of organization"], ["created_at", "2021-01-29 19:18:12.301443"], ["updated_at", "2021-01-29 19:18:12.301443"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "vaccary"], ["difficulty", 3], ["url", ""], ["definition", "Cause to pour out"], ["created_at", "2021-01-29 19:18:12.304470"], ["updated_at", "2021-01-29 19:18:12.304470"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "valetudinary"], ["difficulty", 3], ["url", ""], ["definition", "Suffering from poor health"], ["created_at", "2021-01-29 19:18:12.307313"], ["updated_at", "2021-01-29 19:18:12.307313"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "binturong"], ["difficulty", 3], ["url", ""], ["definition", "A tree-dwelling Asian civet with a coarse blackish coat and a muscular prehensile tail."], ["created_at", "2021-01-29 19:18:12.310338"], ["updated_at", "2021-01-29 19:18:12.310338"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "propinquity"], ["difficulty", 2], ["url", ""], ["definition", "The state of being close to someone or something; proximity"], ["created_at", "2021-01-29 19:18:12.314001"], ["updated_at", "2021-01-29 19:18:12.314001"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "deciduous"], ["difficulty", 2], ["url", ""], ["definition", "(Of a tree or shrub) shedding its leaves annually"], ["created_at", "2021-01-29 19:18:12.316937"], ["updated_at", "2021-01-29 19:18:12.316937"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "baleen"], ["difficulty", 2], ["url", ""], ["definition", "Whalebone"], ["created_at", "2021-01-29 19:18:12.319774"], ["updated_at", "2021-01-29 19:18:12.319774"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "egress"], ["difficulty", 2], ["url", ""], ["definition", "The action of going out of or leaving a place"], ["created_at", "2021-01-29 19:18:12.322536"], ["updated_at", "2021-01-29 19:18:12.322536"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "integument"], ["difficulty", 2], ["url", ""], ["definition", "A tough outer protective layer, especially that of an animal or plant"], ["created_at", "2021-01-29 19:18:12.325492"], ["updated_at", "2021-01-29 19:18:12.325492"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "whelp"], ["difficulty", 1], ["url", ""], ["definition", "A puppy"], ["created_at", "2021-01-29 19:18:12.328825"], ["updated_at", "2021-01-29 19:18:12.328825"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "shield"], ["difficulty", 1], ["url", ""], ["definition", "A broad piece of metal or another suitable material, held by straps or a handle attached on one side, used as a protection against blows or missiles"], ["created_at", "2021-01-29 19:18:12.332129"], ["updated_at", "2021-01-29 19:18:12.332129"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "mildew"], ["difficulty", 1], ["url", ""], ["definition", "A thin whitish coating consisting of minute fungal hyphae, growing on plants or damp organic material such as paper or leather"], ["created_at", "2021-01-29 19:18:12.335243"], ["updated_at", "2021-01-29 19:18:12.335243"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "outrageous"], ["difficulty", 1], ["url", ""], ["definition", "Shockingly bad or excessive"], ["created_at", "2021-01-29 19:18:12.338394"], ["updated_at", "2021-01-29 19:18:12.338394"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "bombard"], ["difficulty", 1], ["url", ""], ["definition", "Attack (a place or person) continuously with bombs, shells, or other missiles"], ["created_at", "2021-01-29 19:18:12.341036"], ["updated_at", "2021-01-29 19:18:12.341036"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "catalepsy"], ["difficulty", 2], ["url", ""], ["definition", "A medical condition characterized by a trance or seizure with a loss of sensation and consciousness accompanied by rigidity of the body"], ["created_at", "2021-01-29 19:18:12.344128"], ["updated_at", "2021-01-29 19:18:12.344128"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "friend"], ["difficulty", 1], ["url", ""], ["definition", "A person whom one knows and with whom one has a bond of mutual affection"], ["created_at", "2021-01-29 19:18:12.346834"], ["updated_at", "2021-01-29 19:18:12.346834"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "clothes"], ["difficulty", 1], ["url", ""], ["definition", "Items worn to cover the body"], ["created_at", "2021-01-29 19:18:12.349651"], ["updated_at", "2021-01-29 19:18:12.349651"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "fortune"], ["difficulty", 1], ["url", ""], ["definition", "Chance or luck as an external, arbitrary force affecting human affairs"], ["created_at", "2021-01-29 19:18:12.352966"], ["updated_at", "2021-01-29 19:18:12.352966"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "frontier"], ["difficulty", 2], ["url", ""], ["definition", "A line or border separating two countries"], ["created_at", "2021-01-29 19:18:12.356059"], ["updated_at", "2021-01-29 19:18:12.356059"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "hiatus"], ["difficulty", 2], ["url", ""], ["definition", "A pause or gap in a sequence, series, or process"], ["created_at", "2021-01-29 19:18:12.359606"], ["updated_at", "2021-01-29 19:18:12.359606"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "endorphin"], ["difficulty", 2], ["url", ""], ["definition", "Any of a group of hormones secreted within the brain and nervous system and having a number of physiological functions"], ["created_at", "2021-01-29 19:18:12.362398"], ["updated_at", "2021-01-29 19:18:12.362398"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kerchief"], ["difficulty", 2], ["url", ""], ["definition", "A piece of fabric used to cover the head, or worn tied around the neck"], ["created_at", "2021-01-29 19:18:12.365290"], ["updated_at", "2021-01-29 19:18:12.365290"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "unsullied"], ["difficulty", 3], ["url", ""], ["definition", "Not spoiled or made impure"], ["created_at", "2021-01-29 19:18:12.368124"], ["updated_at", "2021-01-29 19:18:12.368124"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "marquee"], ["difficulty", 3], ["url", ""], ["definition", "A canopy projecting over the entrance to a theater, hotel, or other building"], ["created_at", "2021-01-29 19:18:12.370881"], ["updated_at", "2021-01-29 19:18:12.370881"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "heliacal"], ["difficulty", 3], ["url", ""], ["definition", "Relating to or near the sun"], ["created_at", "2021-01-29 19:18:12.373951"], ["updated_at", "2021-01-29 19:18:12.373951"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "sidekick"], ["difficulty", 1], ["url", ""], ["definition", "A person's assistant or close associate, especially one who has less authority than that person"], ["created_at", "2021-01-29 19:18:12.377284"], ["updated_at", "2021-01-29 19:18:12.377284"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "theater"], ["difficulty", 1], ["url", ""], ["definition", "A building or outdoor area in which plays and other dramatic performances are given"], ["created_at", "2021-01-29 19:18:12.380107"], ["updated_at", "2021-01-29 19:18:12.380107"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "muscular"], ["difficulty", 1], ["url", ""], ["definition", "Vigorously robust"], ["created_at", "2021-01-29 19:18:12.383271"], ["updated_at", "2021-01-29 19:18:12.383271"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.8ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "astute"], ["difficulty", 1], ["url", ""], ["definition", "Having or showing an ability to accurately assess situations or people and turn this to one's advantage"], ["created_at", "2021-01-29 19:18:12.403825"], ["updated_at", "2021-01-29 19:18:12.403825"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "levity"], ["difficulty", 1], ["url", ""], ["definition", "Humor or frivolity, especially the treatment of a serious matter with humor or in a manner lacking due respect"], ["created_at", "2021-01-29 19:18:12.409558"], ["updated_at", "2021-01-29 19:18:12.409558"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "cowlick"], ["difficulty", 1], ["url", ""], ["definition", "A lock of hair that grows in a direction different from the rest and that resists being combed flat"], ["created_at", "2021-01-29 19:18:12.413779"], ["updated_at", "2021-01-29 19:18:12.413779"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "fascinator"], ["difficulty", 2], ["url", ""], ["definition", "A woman's light, decorative headpiece consisting of feathers, flowers, beads, etc. attached to a comb or hair clip"], ["created_at", "2021-01-29 19:18:12.416958"], ["updated_at", "2021-01-29 19:18:12.416958"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "seismology"], ["difficulty", 2], ["url", ""], ["definition", "The branch of science concerned with earthquakes and related phenomena"], ["created_at", "2021-01-29 19:18:12.420365"], ["updated_at", "2021-01-29 19:18:12.420365"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "keratitis"], ["difficulty", 2], ["url", ""], ["definition", "Inflammation of the cornea of the eye"], ["created_at", "2021-01-29 19:18:12.423600"], ["updated_at", "2021-01-29 19:18:12.423600"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "annihilate"], ["difficulty", 2], ["url", ""], ["definition", "Destroy utterly; obliterate"], ["created_at", "2021-01-29 19:18:12.426943"], ["updated_at", "2021-01-29 19:18:12.426943"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "philharmonic"], ["difficulty", 2], ["url", ""], ["definition", "Devoted to music (chiefly used in the names of orchestras"], ["created_at", "2021-01-29 19:18:12.430858"], ["updated_at", "2021-01-29 19:18:12.430858"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "contrabassoon"], ["difficulty", 2], ["url", ""], ["definition", "The lowest member of the woodwind family in the orchestra"], ["created_at", "2021-01-29 19:18:12.433978"], ["updated_at", "2021-01-29 19:18:12.433978"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "jacquard"], ["difficulty", 3], ["url", ""], ["definition", "An apparatus with perforated cards, fitted to a loom to facilitate the weaving of figured and brocaded fabrics"], ["created_at", "2021-01-29 19:18:12.437901"], ["updated_at", "2021-01-29 19:18:12.437901"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "sorghum"], ["difficulty", 3], ["url", ""], ["definition", "A widely cultivated cereal native to warm regions of the Old World. It is a major source of grain and of feed for livestock"], ["created_at", "2021-01-29 19:18:12.441179"], ["updated_at", "2021-01-29 19:18:12.441179"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "appurtenance"], ["difficulty", 3], ["url", ""], ["definition", "An accessory or other item associated with a particular activity or style of living"], ["created_at", "2021-01-29 19:18:12.445135"], ["updated_at", "2021-01-29 19:18:12.445135"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "fanfaronade"], ["difficulty", 3], ["url", ""], ["definition", "Arrogant or boastful talk"], ["created_at", "2021-01-29 19:18:12.448423"], ["updated_at", "2021-01-29 19:18:12.448423"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "olecranon"], ["difficulty", 3], ["url", ""], ["definition", "The bony prominence of the elbow, on the upper end of the ulna"], ["created_at", "2021-01-29 19:18:12.451285"], ["updated_at", "2021-01-29 19:18:12.451285"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "escritoire"], ["difficulty", 3], ["url", ""], ["definition", "A small writing desk with drawers and compartments"], ["created_at", "2021-01-29 19:18:12.455203"], ["updated_at", "2021-01-29 19:18:12.455203"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "jicama"], ["difficulty", 3], ["url", ""], ["definition", "The crisp, white-fleshed, edible tuber of a Central American climbing plant of the pea family"], ["created_at", "2021-01-29 19:18:12.458395"], ["updated_at", "2021-01-29 19:18:12.458395"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "difficulty", "url", "definition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "catachresis"], ["difficulty", 3], ["url", ""], ["definition", "The use of a word in a way that is not correct, for example, the use of mitigate for militate"], ["created_at", "2021-01-29 19:18:12.461489"], ["updated_at", "2021-01-29 19:18:12.461489"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
