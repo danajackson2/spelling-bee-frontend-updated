@@ -9,12 +9,23 @@ let currentBoxNum
 let counter = 0
 let curr_grid = []
 let timerInterval = null;
+let userIds = {}
+let wordList = []
 const container = document.getElementById("container");
 const gems = ['assets/greengem.png','assets/whitegem.png','assets/purplegem.png','assets/redgem.png']
 addEventListeners()
 
 function getWord(difficulty){
-  fetch(`${WORDS_URL}/${difficulty}`)
+  fetch(`${WORDS_URL}`,{
+    method: 'POST',
+    headers: {'content-type':'application/json'},
+    body: JSON.stringify({
+      data: {
+        usedWords: wordList,
+        difficulty: difficulty
+      }
+    })
+  })
   .then(res => res.json())
   .then(object => addWordToCard(object))
 }
@@ -46,27 +57,70 @@ function newUser(e){
     })
 }
 
+function deleteUser(e){
+  e.preventDefault()
+  document.getElementById('delete-user-form').remove()
+  let x = e.target.querySelector('input').value
+  if (x === user1 || x === user2){
+    fetch(`${USERS_URL}/${userIds[x]}`, {
+      method: 'DELETE'
+    })
+    x === user1 ? logout(1, x) : logout(2, x)    
+  } else {
+    alert('Must be logged in to delete user.')
+  } 
+}
+
+function logout(num, name){
+  num === 1 ? user1 = '' : user2 = ''
+  document.getElementById(`player-${num}-name`).textContent = `PLAYER ${num}`
+  document.getElementById(`player-${num}-score`).textContent = 'SCORE: '
+  delete userIds[name]
+  document.getElementById(`loginout${num}`).textContent = 'Log in'
+  if (num == 1) {
+    document.querySelector('div.boxed').style.borderWidth= '2px'
+    document.querySelector('div.boxed').style.borderColor = 'green'
+  } else {
+    document.querySelector('div.boxed2').style.borderWidth= '2px'
+    document.querySelector('div.boxed2').style.borderColor = 'green'
+  }
+  clearBoard()
+}
+
 function login(e, num){
-    if (document.getElementById(`player-${num}-name`).textContent === `PLAYER ${num}`){
-      e.preventDefault()
-      let name = e.target.querySelector('input').value
-      fetch(`${USERS_URL}/login/${name}`,{
-        method: 'POST',
-        headers: {'content-type':'application/json'},
-        body: JSON.stringify({
-          username: name
+  if (document.getElementById(`player-${num}-name`).textContent === `PLAYER ${num}`){
+    e.preventDefault()
+    let name = e.target.querySelector('input').value
+    if (Object.keys(userIds).includes(name)){
+      alert('Cannot log in the same user twice.')
+      document.querySelector(`#player-${num}-login input`).value = ""
+    } else {
+      if (name.replace(/\s/g,"") !== ""){
+        fetch(`${USERS_URL}/login/${name}`,{
+          method: 'POST',
+          headers: {'content-type':'application/json'},
+          body: JSON.stringify({
+            username: name
+          })
         })
-      })
-      .then(res => res.json())
-      .then(object => {
-        if (object["message"]){
-          alert(object['message'])
-        } else {
-          document.querySelector(`#player-${num}-login input`).value = ""
-          populateUser(object['name'], num)
-        }
-      })
+        .then(res => res.json())
+        .then(object => {
+          if (object["message"]){
+            alert(object['message'])
+          } else {
+            userIds[object['name']] = object['id']
+            document.querySelector(`#player-${num}-login input`).value = ""
+            populateUser(object['name'], num)
+            document.getElementById(`loginout${num}`).textContent = 'Log out'
+          }
+        })
+      }
     }
+  } else if (document.getElementById(`player-${num}-name`).textContent.includes(':')){
+    e.preventDefault()
+    let name = num === 1 ? user1 : user2
+    logout(num, name)
+  }
 }
 
 function newGame(u1, u2, num=4){
@@ -150,14 +204,17 @@ function startGame(num){
 
 function clearBoard(){
   document.getElementById('container').innerHTML = ""
-  document.querySelector('div.boxed').style.borderWidth = '2px'
-  document.querySelector('div.boxed2').style.borderWidth = 'green'
+  document.querySelector('div.boxed').style.border = '2px solid green'
+  document.querySelector('div.boxed2').style.border = '2px solid green'
   document.querySelectorAll('div.correct1 table td').forEach(el => el.remove())
   document.querySelectorAll('div.incorrect1 table td').forEach(el => el.remove())
   document.querySelectorAll('div.correct2 table td').forEach(el => el.remove())
   document.querySelectorAll('div.incorrect2 table td').forEach(el => el.remove())
-  document.querySelector('#player-1-score span').textContent = 0
-  document.querySelector('#player-2-score span').textContent = 0
+  document.querySelector('#player-1-score span') ? document.querySelector('#player-1-score span').textContent = 0 : null
+  document.querySelector('#player-2-score span') ? document.querySelector('#player-2-score span').textContent = 0 : null
+  document.getElementById('left-bee').style.display = 'block'
+  document.getElementById('right-bee').style.display = 'none'
+  wordList = []
 }
 
 function newUserMenu(){
@@ -185,6 +242,31 @@ function newUserMenu(){
     }
 }
 
+function deleteUserMenu(){
+  if (!document.getElementById('delete-user-form')){
+      let form = document.createElement('form')
+      form.id = 'delete-user-form'
+      form.style.paddingRight = '20px'
+      let label = document.createElement('label')
+      label.textContent = "Delete:"
+      let input = document.createElement('input')
+      input.style = 'color:black'
+      input.placeholder = "Username"
+      input.style.marginLeft = '10px'
+      let button = document.createElement('button')
+      button.type = 'submit'
+      button.textContent = "Submit"
+      button.style = 'color:black'
+      button.style.marginLeft = '10px'
+      form.append(label, input, button)
+      document.getElementById('delete-user-div').appendChild(form)
+      form.addEventListener('submit', deleteUser)
+  } else {
+    document.getElementById('delete-user-form').removeEventListener('submit', deleteUser)
+    document.getElementById('delete-user-form').remove()
+  }
+}
+
 function populateUser(name, num){
   (num === 1)? user1 = name : user2 = name
   document.getElementById(`player-${num}-name`).textContent = `PLAYER ${num}: ${name}`;
@@ -205,6 +287,7 @@ function addEventListeners(){
   scoreboard.addEventListener('click',showScores)
   closescores.addEventListener('click',hideScores)
   document.getElementById('new-user-button').addEventListener('click', newUserMenu)
+  document.getElementById('delete-user-button').addEventListener('click', deleteUserMenu)
   document.getElementById('player-1-login').addEventListener('submit', (e) => login(e, 1))
   document.getElementById('player-2-login').addEventListener('submit', (e) => login(e, 2))
   document.getElementById('answer').addEventListener('submit', (e) => evaluateAnswer(e, currentBoxNum))
@@ -288,6 +371,7 @@ function evaluateAnswer(e, num){
     updateScore(box)
     addToCorrectColumn(answer)
     boxToDone(box)
+    wordList.push(answer)
     box.removeEventListener('click', showCard)
   } else {
     addToIncorrectColumn(correct)
@@ -567,7 +651,6 @@ function createTimer(){
 }
 function onTimesUp() {
   clearInterval(timerInterval);
-  // document.getElementById('app').innerHTML = ""
   document.querySelector('div.base-timer').style.display = "none"
   document.querySelector('form#answer input').value = ""
   document.getElementById('wordcard').style.display = "None"

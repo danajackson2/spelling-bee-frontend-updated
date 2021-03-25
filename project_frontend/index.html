@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
   <script defer src="index.js"></script>
 </head>
 
@@ -34,12 +34,14 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right"> 
+        <li>
         <div id="new-user-button"><h4 id="signup">👤 Sign Up</h4></div>
         <div id="new-user-div"></div>
-       <!-- <span class="glyphicon glyphicon-user"></span><div id="new-user-div"></div>
-          <div id="new-user-button"><h4 id="signup">Sign Up</h4></div> -->
-        </div>
-        
+      </li>
+      <li>
+        <div id="delete-user-button"><h4 id="delete_user">👤 Delete</h4></div>
+        <div id="delete-user-div"></div>
+      </li>
       </ul>
     </div>
   </nav>
@@ -47,12 +49,12 @@
 <form class="login" id="player-1-login">
   <label>Player 1</label>
   <input>
-  <button type="submit">Log in</button>
+  <button id='loginout1' type="submit">Log in</button>
 </form>
 <form class="login" id="player-2-login">
   <label>Player 2</label>
   <input>
-  <button type="submit">Log in</button>
+  <button id='loginout2' type="submit">Log in</button>
 </form>
 
 <img src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3a733a2-a526-43c0-b212-5824230ff90c/d7fqea5-baba964a-91a8-4050-b9e1-0b957ebb3c34.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYjNhNzMzYTItYTUyNi00M2MwLWIyMTItNTgyNDIzMGZmOTBjXC9kN2ZxZWE1LWJhYmE5NjRhLTkxYTgtNDA1MC1iOWUxLTBiOTU3ZWJiM2MzNC5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.R1O8v29Wq4RGx4VRUkPth8r5ugQ0ubDVq_VytjZpMX0" id = "left-bee" width ="150" height="150">
@@ -61,17 +63,17 @@
   <div class="boxed" style='background-image:url(https://actforbees.org/wp-content/uploads/2016/02/HoneyComb-Background.png); background-position: center'>
     <h3 id='player-1-name'>PLAYER 1</h3>
     <h3 id='player-1-score'>SCORE: </h3>
-    <div class = "correct1">
+    <div class = "correct1 correct">
       <table style="width:100%">
         <tr>
-          <th style ="text-align: center;">Correct Words</th>
+          <th class='center-bold'>Correct Words</th>
         </tr>
       </table>
     </div>
     <div class = "incorrect1">
       <table style="width:100%">
         <tr>
-          <th style ="text-align: center;">Incorrect Words</th>
+          <th class='center-bold'>Incorrect Words</th>
         </tr>
       </table>
     </div>
@@ -113,17 +115,17 @@
   <div class="boxed2" style='background-image:url(https://actforbees.org/wp-content/uploads/2016/02/HoneyComb-Background.png); background-position: center'>
     <h3 id='player-2-name' style="text-align: center;">PLAYER 2</h3>
     <h3 id='player-2-score' style="text-align: center;">SCORE: </h3>
-    <div class = "correct2">
+    <div class = "correct2 correct">
       <table style="width:100%;">
         <tr>
-          <th style ="text-align: center;">Correct Words</th>
+          <th class='center-bold'>Correct Words</th>
         </tr>
       </table>
     </div>  
     <div class = "incorrect2">
       <table style="width:100%">
         <tr>
-          <th style ="text-align: center;">Incorrect Words</th>
+          <th class='center-bold'>Incorrect Words</th>
         </tr>
       </table>
   </div>
